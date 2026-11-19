@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#063d30">
-<title>BNP Paribas - Espace personnel</title>
+<title>BNP - Espace personnel</title>
 
 <style>
 *{box-sizing:border-box}
@@ -14,18 +14,19 @@ body{
   background:#f4f6f5;
   color:#182b25;
   font-family:Arial,sans-serif;
+  padding-bottom:20px;
 }
 
 header{
   background:linear-gradient(125deg,#063d30,#087b55);
   color:white;
-  padding:30px 22px;
-  border-radius:0 0 25px 25px;
+  padding:26px 22px;
+  border-radius:0 0 24px 24px;
 }
 
 header h1{
   margin:0;
-  font-size:32px;
+  font-size:30px;
   letter-spacing:2px;
 }
 
@@ -41,38 +42,31 @@ main{
 }
 
 .hero{
-  margin:20px 18px;
+  margin:18px auto;
+  max-width:564px;
   border-radius:20px;
   overflow:hidden;
   background:#0b4938;
   color:white;
-  max-width:564px;
-  margin-left:auto;
-  margin-right:auto;
 }
 
 .hero img{
   width:100%;
-  height:180px;
+  height:170px;
   object-fit:cover;
   display:block;
 }
 
-.hero-text{
-  padding:18px;
-}
-
-.hero-text h2{
-  margin-top:0;
-  font-size:22px;
-}
+.hero-text{padding:18px}
+.hero-text h2{margin:0 0 8px;font-size:21px}
 
 .card{
   background:white;
-  padding:23px;
-  border-radius:20px;
+  padding:21px;
+  border-radius:18px;
   margin:15px 0;
-  box-shadow:0 8px 28px #123b2910;
+  box-shadow:0 5px 20px #123b2910;
+  scroll-margin-top:15px;
 }
 
 h2{font-size:20px}
@@ -82,15 +76,15 @@ input{
   padding:14px;
   margin:7px 0 14px;
   border:1px solid #ccd5cf;
-  border-radius:12px;
+  border-radius:11px;
   background:#fbfdfc;
   font-size:15px;
 }
 
 button{
-  padding:15px 20px;
+  padding:14px 18px;
   border:0;
-  border-radius:12px;
+  border-radius:11px;
   background:#08734f;
   color:white;
   font-weight:bold;
@@ -107,6 +101,7 @@ button{
 .amount{
   font-size:32px;
   font-weight:bold;
+  color:#08734f;
 }
 
 small,.notice{
@@ -130,39 +125,60 @@ small,.notice{
   overflow-wrap:anywhere;
 }
 
+/* BARRE DE NAVIGATION MOBILE */
+.bottom-nav{
+  position:fixed;
+  bottom:0;
+  left:0;
+  width:100%;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:5px;
+  padding:9px 7px calc(9px + env(safe-area-inset-bottom));
+  background:#ffffff;
+  box-shadow:0 -4px 18px #00000015;
+  border-top:1px solid #e6ece8;
+  z-index:1000;
+}
+
+.bottom-nav button{
+  margin:0;
+  padding:8px 2px;
+  background:transparent;
+  color:#607168;
+  border-radius:12px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:5px;
+  font-size:11px;
+  font-weight:normal;
+  min-width:0;
+}
+
+.bottom-nav button .nav-icon{
+  font-size:21px;
+  line-height:1;
+}
+
+.bottom-nav button.active{
+  background:#e8f3ed;
+  color:#08734f;
+  font-weight:bold;
+}
+
+body.dashboard-open{
+  padding-bottom:90px;
+}
+
 footer{
   text-align:center;
   color:#65776c;
   font-size:12px;
   padding:20px;
 }
-</style> 
-.bottom-nav{
-  position:fixed;
-  bottom:0;
-  left:0;
-  width:100%;
-  display:flex;
-  justify-content:space-around;
-  background:white;
-  padding:12px 5px;
-  box-shadow:0 -3px 15px #0001;
-  z-index:1000;
-}
-.bottom-nav a{
-  text-decoration:none;
-  color:#08734f;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:5px;
-  font-size:21px;
-}
-.bottom-nav span{
-  font-size:11px;
-}
-body{padding-bottom:75px}
-  </style>
+</style>
 </head>
 
 <body>
@@ -175,10 +191,10 @@ body{padding-bottom:75px}
 <div class="hero">
   <img
     src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1000"
-    alt="Paiement numérique par carte bancaire">
+    alt="Paiement numérique">
   <div class="hero-text">
     <h2>Bienvenue dans votre espace</h2>
-    <p>Gérez vos opérations  simplement et en toute transparence.</p>
+    <p>Gérez vos opérations virtuelles simplement et en toute transparence.</p>
   </div>
 </div>
 
@@ -204,15 +220,20 @@ body{padding-bottom:75px}
 
 <section id="dashboard" class="hidden">
 
-<div class="card">
+<div class="card" id="homeSection">
 <p>Bonjour, <strong id="userEmail"></strong></p>
-<p>Solde disponible — Solde</p>
+<p>Solde disponible — Solde virtuel</p>
 <div class="amount" id="balance">0,00 €</div>
 </div>
 
-<div class="card">
-<h2>Envoyer un transfert</h2>
+<div class="card" id="accountsSection">
+<h2>Mes comptes virtuels</h2>
+<p>Consultez votre solde virtuel depuis votre espace personnel.</p>
+<div class="amount" id="accountBalance">0,00 €</div>
+</div>
 
+<div class="card">
+<h2>Envoyer un transfert virtuel</h2>
 <label>E-mail du destinataire</label>
 <input id="recipient" type="email" placeholder="Adresse e-mail du client">
 
@@ -222,14 +243,21 @@ body{padding-bottom:75px}
 <button onclick="transfer()">Envoyer</button>
 </div>
 
-<div class="card">
-<h2>Historique des opérations </h2>
+<div class="card" id="historySection">
+<h2>Historique des opérations virtuelles</h2>
 <div id="history">Chargement...</div>
+</div>
+
+<div class="card" id="profileSection">
+<h2>Mon profil</h2>
+<p>Adresse e-mail :</p>
+<strong id="profileEmail"></strong>
+<p class="notice">Espace personnel de gestion virtuelle.</p>
 </div>
 
 <div id="adminPanel" class="card hidden">
 <h2>Espace administrateur</h2>
-<p>Attribution de soldes  aux clients.</p>
+<p>Attribution de soldes virtuels aux clients.</p>
 
 <label>E-mail du client</label>
 <input id="clientEmail" type="email" placeholder="E-mail du client">
@@ -248,28 +276,36 @@ body{padding-bottom:75px}
 <button class="secondary" onclick="refresh()">Actualiser</button>
 <button onclick="logout()">Déconnexion</button>
 
+<!-- NAVIGATION VISIBLE UNIQUEMENT APRÈS CONNEXION -->
+<nav class="bottom-nav">
+  <button class="active" onclick="goTo('homeSection',this)">
+    <span class="nav-icon">⌂</span>
+    <span>Accueil</span>
+  </button>
+  <button onclick="goTo('accountsSection',this)">
+    <span class="nav-icon">▣</span>
+    <span>Comptes</span>
+  </button>
+  <button onclick="goTo('historySection',this)">
+    <span class="nav-icon">◷</span>
+    <span>Historique</span>
+  </button>
+  <button onclick="goTo('profileSection',this)">
+    <span class="nav-icon">♙</span>
+    <span>Profil</span>
+  </button>
+</nav>
+
 </section>
 
 <div class="card notice">
 <strong>Information importante</strong>
-<p>Ne communiquer vos informations personnelles à personne.</p>
+<p>BNP Paribas.Ne communiquer jamais vos information personnelle</p>
 </div>
 
 </main>
 
-<footer>BNP · Espace de gestion</footer>
-<nav class="bottom-nav">
-  <a href="#auth">⌂<span>Accueil</span></a>
-  <a href="#dashboard">▣<span>Comptes</span></a>
-  <a href="#history">◷<span>Historique</span></a>
-  <a href="#profile">♙<span>Profil</span></a>
-</nav>
-<nav class="bottom-nav">
-  <a href="#auth">⌂<span>Accueil</span></a>
-  <a href="#dashboard">▣<span>Comptes</span></a>
-  <a href="#history">◷<span>Historique</span></a>
-  <a href="#profile">♙<span>Profil</span></a>
-</nav>
+<footer>BNP · Espace de gestion </footer>
 
 <script type="module">
 import { createClient } from
@@ -282,25 +318,58 @@ const db = createClient(URL, KEY);
 let currentUser = null;
 
 const $ = id => document.getElementById(id);
+
 const euro = n => Number(n).toLocaleString('fr-FR',{
-  style:'currency',currency:'EUR'
+  style:'currency',
+  currency:'EUR'
 });
+
+window.goTo = function(section,button){
+  const target=$(section);
+  if(target){
+    target.scrollIntoView({
+      behavior:'smooth',
+      block:'start'
+    });
+  }
+
+  document.querySelectorAll('.bottom-nav button')
+    .forEach(btn=>btn.classList.remove('active'));
+
+  button.classList.add('active');
+};
 
 function message(text){
   $('message').textContent=text;
 }
+
 function authMessage(text){
   $('authMessage').textContent=text;
+}
+
+function showDashboard(){
+  $('auth').classList.add('hidden');
+  $('dashboard').classList.remove('hidden');
+  document.body.classList.add('dashboard-open');
+}
+
+function showLogin(){
+  $('dashboard').classList.add('hidden');
+  $('auth').classList.remove('hidden');
+  document.body.classList.remove('dashboard-open');
 }
 
 window.signUp = async function(){
   const email=$('email').value.trim();
   const password=$('password').value;
+
   if(!email || password.length<8){
     authMessage('Saisissez un e-mail et un mot de passe de 8 caractères minimum.');
     return;
   }
+
   const {error}=await db.auth.signUp({email,password});
+
   authMessage(error ? error.message :
     'Inscription envoyée. Vérifiez votre e-mail si une confirmation est demandée.');
 };
@@ -310,26 +379,33 @@ window.signIn = async function(){
     email:$('email').value.trim(),
     password:$('password').value
   });
-  if(error){authMessage(error.message);return;}
+
+  if(error){
+    authMessage(error.message);
+    return;
+  }
+
   await loadAccount(data.user);
 };
 
 window.logout = async function(){
   await db.auth.signOut();
   currentUser=null;
-  $('dashboard').classList.add('hidden');
-  $('auth').classList.remove('hidden');
+  showLogin();
 };
 
 async function loadAccount(user){
   currentUser=user;
-  $('auth').classList.add('hidden');
-  $('dashboard').classList.remove('hidden');
+  showDashboard();
+
   $('userEmail').textContent=user.email;
+  $('profileEmail').textContent=user.email;
 
   const {data:profile,error:profileError}=await db
-    .from('profiles').select('role')
-    .eq('user_id',user.id).single();
+    .from('profiles')
+    .select('role')
+    .eq('user_id',user.id)
+    .single();
 
   if(profileError){
     message('Profil en préparation. Actualisez dans quelques instants.');
@@ -337,16 +413,22 @@ async function loadAccount(user){
   }
 
   $('adminPanel').classList.toggle('hidden',profile.role!=='admin');
+
   await refresh();
-  if(profile.role==='admin') await loadClients();
+
+  if(profile.role==='admin'){
+    await loadClients();
+  }
 }
 
 window.refresh = async function(){
   if(!currentUser)return;
 
   const {data:wallet,error}=await db
-    .from('wallets').select('balance')
-    .eq('user_id',currentUser.id).single();
+    .from('wallets')
+    .select('balance')
+    .eq('user_id',currentUser.id)
+    .single();
 
   if(error){
     message('Impossible de charger le solde : '+error.message);
@@ -354,6 +436,7 @@ window.refresh = async function(){
   }
 
   $('balance').textContent=euro(wallet.balance);
+  $('accountBalance').textContent=euro(wallet.balance);
 
   const {data:rows,error:historyError}=await db
     .from('transactions')
@@ -368,6 +451,7 @@ window.refresh = async function(){
   }
 
   $('history').innerHTML='';
+
   if(!rows.length){
     $('history').textContent='Aucune opération pour le moment.';
     return;
@@ -377,12 +461,14 @@ window.refresh = async function(){
     const sent=row.sender_id===currentUser.id;
     const date=new Date(row.created_at).toLocaleString('fr-FR');
     const item=document.createElement('div');
+
     item.className='item';
     item.textContent=
       (row.operation_type==='credit'?'Crédit virtuel':
       sent?'Transfert envoyé':'Transfert reçu')
       +' · '+(sent?'-':'+')+euro(row.amount)
       +' · '+date+' · '+row.reference;
+
     $('history').appendChild(item);
   });
 };
@@ -390,47 +476,68 @@ window.refresh = async function(){
 window.transfer = async function(){
   const email=$('recipient').value.trim();
   const amount=Number($('transferAmount').value);
+
   if(!email || !Number.isFinite(amount) || amount<=0){
     message('Vérifiez le destinataire et le montant.');
     return;
   }
+
   const {error}=await db.rpc('transfer_to_email',{
-    p_email:email,p_amount:amount
+    p_email:email,
+    p_amount:amount
   });
-  if(error){message(error.message);return;}
-  message('Transfert virtuel effectué.');
+
+  if(error){
+    message(error.message);
+    return;
+  }
+
+  message('Transfert  effectué.');
   $('recipient').value='';
   $('transferAmount').value='';
+
   await refresh();
 };
 
 window.credit = async function(){
   const email=$('clientEmail').value.trim();
   const amount=Number($('creditAmount').value);
+
   if(!email || !Number.isFinite(amount) || amount<=0){
     message('Vérifiez l’e-mail et le montant.');
     return;
   }
+
   const {error}=await db.rpc('admin_credit',{
-    p_email:email,p_amount:amount
+    p_email:email,
+    p_amount:amount
   });
-  if(error){message(error.message);return;}
+
+  if(error){
+    message(error.message);
+    return;
+  }
+
   message('Solde virtuel attribué.');
   $('clientEmail').value='';
   $('creditAmount').value='';
+
   await refresh();
 };
 
 async function loadClients(){
   const {data,error}=await db
-    .from('profiles').select('email,role,created_at')
+    .from('profiles')
+    .select('email,role,created_at')
     .order('created_at',{ascending:false});
 
   if(error){
     $('clients').textContent='Liste indisponible.';
     return;
   }
+
   $('clients').innerHTML='';
+
   data.forEach(client=>{
     const div=document.createElement('div');
     div.className='item';
@@ -440,16 +547,18 @@ async function loadClients(){
 }
 
 const {data:{session}}=await db.auth.getSession();
-if(session) await loadAccount(session.user);
+
+if(session){
+  await loadAccount(session.user);
+}
 
 db.auth.onAuthStateChange((event,session)=>{
   if(event==='SIGNED_OUT'){
     currentUser=null;
-    $('dashboard').classList.add('hidden');
-    $('auth').classList.remove('hidden');
+    showLogin();
   }
 });
 </script>
 
 </body>
-  </html>
+                                        </html>
