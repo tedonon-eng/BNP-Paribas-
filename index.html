@@ -3,142 +3,235 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#08734f">
-<title>BNP - Espace personnel</title>
-  body {
-  background: #f4f6f5;
-  color: #182b25;
-  font-family: Arial, sans-serif;
-}
-header {
-  background: linear-gradient(125deg,#063d30,#087b55);
-  padding: 30px 22px;
-  border-radius: 0 0 25px 25px;
-}
-header h1 {
-  font-size: 32px;
-  letter-spacing: 2px;
-}
-header p {
-  color: #e0eee7;
-}
-.card {
-  border-radius: 20px;
-  padding: 23px;
-  box-shadow: 0 8px 28px #123b2910;
-}
-button {
-  border-radius: 12px;
-  padding: 15px 20px;
-}
-input {
-  border-radius: 12px;
-  background: #fbfdfc;
-}
-.hero {
-  margin: 20px 0;
-  border-radius: 20px;
-  overflow: hidden;
-  background: #0b4938;
-  color: white;
-}
-.hero img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  display: block;
-}
-.hero-text {
-  padding: 18px;
-}
-.hero-text h2 {
-  margin-top: 0;
-  font-size: 22px;
-}
+<meta name="theme-color" content="#063d30">
+<title>BNP Paribas - Espace personnel</title>
+
 <style>
 *{box-sizing:border-box}
-body{margin:0;background:#f2f5f3;color:#26332d;font-family:Arial,sans-serif}
-header{background:#08734f;color:white;padding:23px}
-header h1{margin:0;font-size:28px}
-main{max-width:600px;margin:auto;padding:18px}
-.card{background:white;padding:20px;border-radius:15px;margin:15px 0;box-shadow:0 3px 12px #0001}
+
+body{
+  margin:0;
+  background:#f4f6f5;
+  color:#182b25;
+  font-family:Arial,sans-serif;
+}
+
+header{
+  background:linear-gradient(125deg,#063d30,#087b55);
+  color:white;
+  padding:30px 22px;
+  border-radius:0 0 25px 25px;
+}
+
+header h1{
+  margin:0;
+  font-size:32px;
+  letter-spacing:2px;
+}
+
+header p{
+  margin:7px 0 0;
+  color:#e0eee7;
+}
+
+main{
+  max-width:600px;
+  margin:auto;
+  padding:18px;
+}
+
+.hero{
+  margin:20px 18px;
+  border-radius:20px;
+  overflow:hidden;
+  background:#0b4938;
+  color:white;
+  max-width:564px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.hero img{
+  width:100%;
+  height:180px;
+  object-fit:cover;
+  display:block;
+}
+
+.hero-text{
+  padding:18px;
+}
+
+.hero-text h2{
+  margin-top:0;
+  font-size:22px;
+}
+
+.card{
+  background:white;
+  padding:23px;
+  border-radius:20px;
+  margin:15px 0;
+  box-shadow:0 8px 28px #123b2910;
+}
+
 h2{font-size:20px}
-input{width:100%;padding:14px;margin:7px 0 14px;border:1px solid #ccd5cf;border-radius:9px;font-size:15px}
-button{padding:13px;border:0;border-radius:9px;background:#08734f;color:white;font-weight:bold;font-size:15px;margin:5px 3px;cursor:pointer}
-.secondary{background:#e7efea;color:#08734f}
-.amount{font-size:32px;font-weight:bold}
-small,.notice{font-size:12px;color:#64736a}
-.item{padding:12px 0;border-bottom:1px solid #eee}
+
+input{
+  width:100%;
+  padding:14px;
+  margin:7px 0 14px;
+  border:1px solid #ccd5cf;
+  border-radius:12px;
+  background:#fbfdfc;
+  font-size:15px;
+}
+
+button{
+  padding:15px 20px;
+  border:0;
+  border-radius:12px;
+  background:#08734f;
+  color:white;
+  font-weight:bold;
+  font-size:15px;
+  margin:5px 3px;
+  cursor:pointer;
+}
+
+.secondary{
+  background:#e7efea;
+  color:#08734f;
+}
+
+.amount{
+  font-size:32px;
+  font-weight:bold;
+}
+
+small,.notice{
+  font-size:12px;
+  color:#64736a;
+}
+
+.item{
+  padding:12px 0;
+  border-bottom:1px solid #eee;
+  overflow-wrap:anywhere;
+}
+
 .hidden{display:none}
-#message{padding:10px;border-radius:8px;background:#edf4ef;margin:10px 0}
+
+#message,#authMessage{
+  padding:10px;
+  border-radius:8px;
+  background:#edf4ef;
+  margin:10px 0;
+  overflow-wrap:anywhere;
+}
+
+footer{
+  text-align:center;
+  color:#65776c;
+  font-size:12px;
+  padding:20px;
+}
 </style>
 </head>
+
 <body>
+
 <header>
-  <div class="hero">
+<h1>BNP</h1>
+<p>Votre espace personnel</p>
+</header>
+
+<div class="hero">
   <img
     src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1000"
     alt="Paiement numérique par carte bancaire">
   <div class="hero-text">
     <h2>Bienvenue dans votre espace</h2>
-    <p>Gérez vos opérations virtuelles simplement et en toute transparence.</p>
+    <p>Gérez vos opérations  simplement et en toute transparence.</p>
   </div>
-  </div>
-<h1>BNP</h1>
-<p>Votre espace personnel</p>
-</header>
+</div>
+
 <main>
+
 <section id="auth">
 <div class="card">
 <h2>Bienvenue</h2>
 <p>Connectez-vous à votre espace.</p>
+
 <label>Adresse e-mail</label>
 <input id="email" type="email" placeholder="Votre adresse e-mail">
+
 <label>Mot de passe</label>
 <input id="password" type="password" placeholder="Votre mot de passe">
+
 <button onclick="signIn()">Se connecter</button>
 <button class="secondary" onclick="signUp()">Créer un compte</button>
+
 <div id="authMessage"></div>
 </div>
 </section>
 
 <section id="dashboard" class="hidden">
+
 <div class="card">
 <p>Bonjour, <strong id="userEmail"></strong></p>
-<p>Solde disponible — Solde virtuel</p>
+<p>Solde disponible — Solde</p>
 <div class="amount" id="balance">0,00 €</div>
 </div>
 
 <div class="card">
-<h2>Envoyer un transfert virtuel</h2>
+<h2>Envoyer un transfert</h2>
+
 <label>E-mail du destinataire</label>
 <input id="recipient" type="email" placeholder="Adresse e-mail du client">
+
 <label>Montant en euros</label>
 <input id="transferAmount" type="number" min="0.01" step="0.01" placeholder="Montant">
+
 <button onclick="transfer()">Envoyer</button>
 </div>
 
 <div class="card">
-<h2>Historique des opérations</h2>
+<h2>Historique des opérations </h2>
 <div id="history">Chargement...</div>
 </div>
 
 <div id="adminPanel" class="card hidden">
 <h2>Espace administrateur</h2>
-<p>Attribution de soldes virtuels aux clients.</p>
+<p>Attribution de soldes  aux clients.</p>
+
 <label>E-mail du client</label>
 <input id="clientEmail" type="email" placeholder="E-mail du client">
+
 <label>Montant à attribuer</label>
 <input id="creditAmount" type="number" min="0.01" step="0.01" placeholder="Montant en euros">
+
 <button onclick="credit()">Attribuer le solde</button>
+
 <h3>Liste des clients</h3>
 <div id="clients">Chargement...</div>
 </div>
 
 <div id="message"></div>
+
 <button class="secondary" onclick="refresh()">Actualiser</button>
 <button onclick="logout()">Déconnexion</button>
+
 </section>
+
+<div class="card notice">
+<strong>Information importante</strong>
+<p>Ne communiquer vos informations personnelles à personne.</p>
+</div>
+
+</main>
+
+<footer>BNP · Espace de gestion de fonds</footer>
 
 <script type="module">
 import { createClient } from
@@ -249,7 +342,7 @@ window.refresh = async function(){
     item.className='item';
     item.textContent=
       (row.operation_type==='credit'?'Crédit virtuel':
-      sent?'Transfert  envoyé':'Transfert  reçu')
+      sent?'Transfert envoyé':'Transfert reçu')
       +' · '+(sent?'-':'+')+euro(row.amount)
       +' · '+date+' · '+row.reference;
     $('history').appendChild(item);
@@ -267,7 +360,7 @@ window.transfer = async function(){
     p_email:email,p_amount:amount
   });
   if(error){message(error.message);return;}
-  message('Transfert effectué.');
+  message('Transfert virtuel effectué.');
   $('recipient').value='';
   $('transferAmount').value='';
   await refresh();
@@ -319,5 +412,6 @@ db.auth.onAuthStateChange((event,session)=>{
   }
 });
 </script>
+
 </body>
   </html>
