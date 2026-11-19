@@ -5,6 +5,56 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#08734f">
 <title>BNP - Espace personnel</title>
+  body {
+  background: #f4f6f5;
+  color: #182b25;
+  font-family: Arial, sans-serif;
+}
+header {
+  background: linear-gradient(125deg,#063d30,#087b55);
+  padding: 30px 22px;
+  border-radius: 0 0 25px 25px;
+}
+header h1 {
+  font-size: 32px;
+  letter-spacing: 2px;
+}
+header p {
+  color: #e0eee7;
+}
+.card {
+  border-radius: 20px;
+  padding: 23px;
+  box-shadow: 0 8px 28px #123b2910;
+}
+button {
+  border-radius: 12px;
+  padding: 15px 20px;
+}
+input {
+  border-radius: 12px;
+  background: #fbfdfc;
+}
+.hero {
+  margin: 20px 0;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #0b4938;
+  color: white;
+}
+.hero img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+}
+.hero-text {
+  padding: 18px;
+}
+.hero-text h2 {
+  margin-top: 0;
+  font-size: 22px;
+}
 <style>
 *{box-sizing:border-box}
 body{margin:0;background:#f2f5f3;color:#26332d;font-family:Arial,sans-serif}
@@ -25,11 +75,19 @@ small,.notice{font-size:12px;color:#64736a}
 </head>
 <body>
 <header>
+  <div class="hero">
+  <img
+    src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1000"
+    alt="Paiement numérique par carte bancaire">
+  <div class="hero-text">
+    <h2>Bienvenue dans votre espace</h2>
+    <p>Gérez vos opérations virtuelles simplement et en toute transparence.</p>
+  </div>
+  </div>
 <h1>BNP</h1>
 <p>Votre espace personnel</p>
 </header>
 <main>
-
 <section id="auth">
 <div class="card">
 <h2>Bienvenue</h2>
