@@ -3,562 +3,482 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#063d30">
-<title>BNP - Espace personnel</title>
+<meta name="theme-color" content="#073d32">
+<title>BNP Espace Virtuel</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <style>
+:root{
+  --green:#087653;
+  --dark:#073d32;
+  --light:#eaf5ef;
+  --gold:#d8b66a;
+  --bg:#f3f6f4;
+  --text:#19352c;
+  --muted:#7c9188;
+  --white:#fff;
+  --red:#c64b4b;
+  --shadow:0 8px 28px #123b2910;
+}
 *{box-sizing:border-box}
-
 body{
-  margin:0;
-  background:#f4f6f5;
-  color:#182b25;
-  font-family:Arial,sans-serif;
-  padding-bottom:20px;
+  margin:0;background:var(--bg);color:var(--text);
+  font-family:Inter,Arial,sans-serif;padding-bottom:90px;
 }
-
+button,input,select{font:inherit}
+button{cursor:pointer}
+.hidden{display:none!important}
 header{
-  background:linear-gradient(125deg,#063d30,#087b55);
-  color:white;
-  padding:26px 22px;
-  border-radius:0 0 24px 24px;
+  background:linear-gradient(130deg,#052f27,#087653);
+  color:white;padding:22px 20px 28px;
+  border-radius:0 0 25px 25px;
 }
-
-header h1{
-  margin:0;
-  font-size:30px;
-  letter-spacing:2px;
+.top{display:flex;align-items:center;justify-content:space-between}
+.brand{font-size:21px;font-weight:800;letter-spacing:.3px}
+.brand span{color:var(--gold)}
+.tagline{font-size:11px;opacity:.8;margin-top:4px}
+.avatar{
+  width:42px;height:42px;border-radius:50%;
+  background:#ffffff20;display:grid;place-items:center;
+  border:1px solid #ffffff40;
 }
-
-header p{
-  margin:7px 0 0;
-  color:#e0eee7;
-}
-
-main{
-  max-width:600px;
-  margin:auto;
-  padding:18px;
-}
-
+.container{padding:18px;max-width:650px;margin:auto}
 .hero{
-  margin:18px auto;
-  max-width:564px;
-  border-radius:20px;
-  overflow:hidden;
-  background:#0b4938;
-  color:white;
+  margin-top:18px;border-radius:20px;overflow:hidden;
+  min-height:145px;position:relative;color:white;
+  background:linear-gradient(90deg,#052f27eF,#052f2780),
+  url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1000') center/cover;
+  padding:22px;display:flex;flex-direction:column;justify-content:center;
 }
-
-.hero img{
-  width:100%;
-  height:170px;
-  object-fit:cover;
-  display:block;
-}
-
-.hero-text{padding:18px}
-.hero-text h2{margin:0 0 8px;font-size:21px}
-
+.hero h2{font-size:21px;margin:0 0 8px}
+.hero p{font-size:12px;line-height:1.6;margin:0;max-width:280px}
 .card{
-  background:white;
-  padding:21px;
-  border-radius:18px;
-  margin:15px 0;
-  box-shadow:0 5px 20px #123b2910;
-  scroll-margin-top:15px;
+  background:white;border-radius:19px;padding:18px;
+  box-shadow:var(--shadow);margin-bottom:15px;
 }
-
-h2{font-size:20px}
-
-input{
-  width:100%;
-  padding:14px;
-  margin:7px 0 14px;
-  border:1px solid #ccd5cf;
-  border-radius:11px;
-  background:#fbfdfc;
-  font-size:15px;
+.balance-card{
+  margin-top:-2px;background:linear-gradient(135deg,#087653,#064b3b);
+  color:white;position:relative;overflow:hidden;
 }
-
-button{
-  padding:14px 18px;
-  border:0;
-  border-radius:11px;
-  background:#08734f;
-  color:white;
-  font-weight:bold;
-  font-size:15px;
-  margin:5px 3px;
-  cursor:pointer;
+.balance-card:after{
+  content:"";position:absolute;width:160px;height:160px;
+  border:1px solid #ffffff20;border-radius:50%;
+  right:-45px;top:-65px;box-shadow:0 0 0 22px #ffffff08,0 0 0 45px #ffffff05;
 }
-
+.small{font-size:12px;color:var(--muted)}
+.balance-card .small{color:#d2e9df}
+.balance{font-size:31px;font-weight:800;margin:10px 0}
+.account-line{display:flex;justify-content:space-between;align-items:center}
+.section-title{font-size:16px;font-weight:800;margin:23px 0 13px}
+.actions{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}
+.action{
+  border:0;background:white;border-radius:15px;padding:14px 5px;
+  box-shadow:var(--shadow);color:var(--green);font-size:11px;
+  font-weight:700;display:flex;align-items:center;gap:8px;flex-direction:column;
+}
+.action i{width:21px;height:21px}
+.action:active,.primary:active{transform:scale(.97)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.stat{background:#f2f8f4;border-radius:13px;padding:13px}
+.stat strong{display:block;font-size:17px;margin-top:6px}
+input,select{
+  width:100%;padding:14px;border:1px solid #dce7e0;
+  border-radius:12px;background:white;outline:none;margin:7px 0 13px;
+  color:var(--text);
+}
+input:focus,select:focus{border-color:var(--green)}
+label{font-size:12px;font-weight:700}
+.primary{
+  width:100%;border:0;background:var(--green);color:white;
+  border-radius:12px;padding:14px;font-weight:700;
+  transition:.2s;
+}
 .secondary{
-  background:#e7efea;
-  color:#08734f;
+  border:1px solid #dce7e0;background:white;color:var(--green);
+  border-radius:10px;padding:9px 12px;font-weight:700;font-size:12px;
 }
-
-.amount{
-  font-size:32px;
-  font-weight:bold;
-  color:#08734f;
+.danger{background:#fff0f0;color:var(--red)}
+.row{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.transaction{
+  display:flex;align-items:center;gap:12px;padding:13px 0;
+  border-bottom:1px solid #edf1ee;
 }
-
-small,.notice{
-  font-size:12px;
-  color:#64736a;
+.transaction:last-child{border:0}
+.tx-icon{
+  width:40px;height:40px;border-radius:13px;
+  background:var(--light);color:var(--green);
+  display:grid;place-items:center;flex-shrink:0;
 }
-
-.item{
-  padding:12px 0;
-  border-bottom:1px solid #eee;
-  overflow-wrap:anywhere;
+.tx-info{flex:1;min-width:0}
+.tx-info strong{font-size:12px;display:block}
+.tx-info small{font-size:10px;color:var(--muted)}
+.amount{font-size:13px;font-weight:800;white-space:nowrap}
+.income{color:var(--green)}
+.outcome{color:var(--red)}
+.notice{
+  background:#fff8e8;color:#76591c;padding:12px;
+  border-radius:12px;font-size:11px;line-height:1.6;margin:12px 0;
 }
-
-.hidden{display:none}
-
-#message,#authMessage{
-  padding:10px;
-  border-radius:8px;
-  background:#edf4ef;
-  margin:10px 0;
-  overflow-wrap:anywhere;
+.disclaimer{
+  background:#eef3f0;color:#63756d;border-radius:12px;
+  padding:12px;font-size:10px;line-height:1.6;margin-top:15px;
 }
-
-/* BARRE DE NAVIGATION MOBILE */
 .bottom-nav{
-  position:fixed;
-  bottom:0;
-  left:0;
-  width:100%;
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:5px;
-  padding:9px 7px calc(9px + env(safe-area-inset-bottom));
-  background:#ffffff;
-  box-shadow:0 -4px 18px #00000015;
-  border-top:1px solid #e6ece8;
-  z-index:1000;
+  position:fixed;bottom:0;left:0;width:100%;z-index:20;
+  display:flex;justify-content:space-around;background:white;
+  padding:10px 4px calc(10px + env(safe-area-inset-bottom));
+  box-shadow:0 -5px 20px #0000000c;
 }
-
-.bottom-nav button{
-  margin:0;
-  padding:8px 2px;
-  background:transparent;
-  color:#607168;
-  border-radius:12px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  gap:5px;
-  font-size:11px;
-  font-weight:normal;
-  min-width:0;
+.nav-btn{
+  border:0;background:none;color:#91a098;display:flex;
+  flex-direction:column;align-items:center;gap:4px;
+  font-size:9px;font-weight:700;min-width:58px;
 }
-
-.bottom-nav button .nav-icon{
-  font-size:21px;
-  line-height:1;
+.nav-btn i{width:20px;height:20px}
+.nav-btn.active{color:var(--green)}
+.toast{
+  position:fixed;top:15px;left:50%;transform:translate(-50%,-120px);
+  background:#073d32;color:white;padding:14px 18px;border-radius:13px;
+  z-index:99;box-shadow:var(--shadow);font-size:12px;
+  transition:.35s;max-width:90%;text-align:center;
 }
-
-.bottom-nav button.active{
-  background:#e8f3ed;
-  color:#08734f;
-  font-weight:bold;
-}
-
-body.dashboard-open{
-  padding-bottom:90px;
-}
-
-footer{
-  text-align:center;
-  color:#65776c;
-  font-size:12px;
-  padding:20px;
+.toast.show{transform:translate(-50%,0)}
+.auth-wrap{max-width:440px;margin:35px auto;padding:18px}
+.auth-logo{text-align:center;color:var(--dark);font-size:25px;font-weight:800;margin:25px 0}
+.auth-logo span{color:var(--green)}
+.page{animation:appear .25s ease}
+@keyframes appear{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:360px){
+ .actions{gap:5px}.action{font-size:10px;padding:12px 2px}
+ .balance{font-size:26px}
 }
 </style>
 </head>
 
 <body>
+<div id="toast" class="toast"></div>
 
+<!-- CONNEXION -->
+<section id="authScreen" class="auth-wrap">
+  <div class="auth-logo">BNP <span>Espace Virtuel</span></div>
+  <div class="card">
+    <h2 id="authTitle">Bienvenue</h2>
+    <p class="small">Connectez-vous à votre espace personnel virtuel.</p>
+    <label>Adresse e-mail</label>
+    <input id="email" type="email" placeholder="Votre adresse e-mail" autocomplete="email">
+    <label>Mot de passe</label>
+    <input id="password" type="password" placeholder="Votre mot de passe" autocomplete="current-password">
+    <button class="primary" id="loginBtn" onclick="signIn()">Se connecter</button>
+    <button class="secondary" style="width:100%;margin-top:10px" onclick="signUp()">Créer un compte</button>
+  </div>
+  <div class="disclaimer">Application indépendante de BNP Paribas. Aucun argent réel, dépôt bancaire ou retrait réel n'est géré par cette application.</div>
+</section>
+
+<!-- APPLICATION -->
+<div id="app" class="hidden">
 <header>
-<h1>BNP</h1>
-<p>Votre espace personnel</p>
+  <div class="top">
+    <div>
+      <div class="brand">BNP <span>Espace Virtuel</span></div>
+      <div class="tagline">VOTRE ESPACE FINANCIER VIRTUEL</div>
+    </div>
+    <div class="avatar"><i data-lucide="user-round"></i></div>
+  </div>
+  <div style="margin-top:19px;font-size:12px;color:#d6e9df">Bonjour, bienvenue dans votre espace</div>
+  <div id="userEmail" style="font-size:13px;font-weight:700;margin-top:5px"></div>
 </header>
 
-<div class="hero">
-  <img
-    src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1000"
-    alt="Paiement numérique">
-  <div class="hero-text">
-    <h2>Bienvenue dans votre espace</h2>
-    <p>Gérez vos opérations virtuelles simplement et en toute transparence.</p>
+<main class="container">
+
+<!-- ACCUEIL -->
+<section id="homePage" class="page">
+  <div class="hero">
+    <h2>Gérez votre espace en toute simplicité</h2>
+    <p>Consultez votre solde virtuel et suivez vos opérations depuis votre téléphone.</p>
   </div>
-</div>
 
-<main>
+  <div class="card balance-card">
+    <div class="account-line">
+      <span class="small">SOLDE DISPONIBLE VIRTUEL</span>
+      <i data-lucide="wallet"></i>
+    </div>
+    <div class="balance" id="balance">0,00 €</div>
+    <div class="account-line">
+      <span class="small">Compte personnel</span>
+      <span class="small">EUR</span>
+    </div>
+  </div>
 
-<section id="auth">
-<div class="card">
-<h2>Bienvenue</h2>
-<p>Connectez-vous à votre espace.</p>
+  <div class="section-title">Opérations rapides</div>
+  <div class="actions">
+    <button class="action" onclick="go('depositPage')"><i data-lucide="plus-circle"></i>Dépôt</button>
+    <button class="action" onclick="go('withdrawPage')"><i data-lucide="wallet"></i>Retrait</button>
+    <button class="action" onclick="go('transferPage')"><i data-lucide="send"></i>Transfert</button>
+    <button class="action" onclick="go('historyPage')"><i data-lucide="history"></i>Historique</button>
+  </div>
 
-<label>Adresse e-mail</label>
-<input id="email" type="email" placeholder="Votre adresse e-mail">
+  <div class="section-title">Activité du compte</div>
+  <div class="card">
+    <div class="row">
+      <strong style="font-size:13px">Évolution des opérations</strong>
+      <select id="chartPeriod" style="width:115px;margin:0;padding:8px;font-size:11px" onchange="drawChart()">
+        <option value="7">7 jours</option>
+        <option value="30" selected>30 jours</option>
+        <option value="365">12 mois</option>
+      </select>
+    </div>
+    <div style="height:210px;margin-top:12px"><canvas id="activityChart"></canvas></div>
+    <div class="small">Graphique basé sur les opérations disponibles dans votre historique.</div>
+  </div>
 
-<label>Mot de passe</label>
-<input id="password" type="password" placeholder="Votre mot de passe">
-
-<button onclick="signIn()">Se connecter</button>
-<button class="secondary" onclick="signUp()">Créer un compte</button>
-
-<div id="authMessage"></div>
-</div>
+  <div class="section-title">Dernières opérations</div>
+  <div class="card" id="recentTransactions"><p class="small">Chargement...</p></div>
 </section>
 
-<section id="dashboard" class="hidden">
-
-<div class="card" id="homeSection">
-<p>Bonjour, <strong id="userEmail"></strong></p>
-<p>Solde disponible — Solde virtuel</p>
-<div class="amount" id="balance">0,00 €</div>
-</div>
-
-<div class="card" id="accountsSection">
-<h2>Mes comptes virtuels</h2>
-<p>Consultez votre solde virtuel depuis votre espace personnel.</p>
-<div class="amount" id="accountBalance">0,00 €</div>
-</div>
-
-<div class="card">
-<h2>Envoyer un transfert virtuel</h2>
-<label>E-mail du destinataire</label>
-<input id="recipient" type="email" placeholder="Adresse e-mail du client">
-
-<label>Montant en euros</label>
-<input id="transferAmount" type="number" min="0.01" step="0.01" placeholder="Montant">
-
-<button onclick="transfer()">Envoyer</button>
-</div>
-
-<div class="card" id="historySection">
-<h2>Historique des opérations virtuelles</h2>
-<div id="history">Chargement...</div>
-</div>
-
-<div class="card" id="profileSection">
-<h2>Mon profil</h2>
-<p>Adresse e-mail :</p>
-<strong id="profileEmail"></strong>
-<p class="notice">Espace personnel de gestion virtuelle.</p>
-</div>
-
-<div id="adminPanel" class="card hidden">
-<h2>Espace administrateur</h2>
-<p>Attribution de soldes virtuels aux clients.</p>
-
-<label>E-mail du client</label>
-<input id="clientEmail" type="email" placeholder="E-mail du client">
-
-<label>Montant à attribuer</label>
-<input id="creditAmount" type="number" min="0.01" step="0.01" placeholder="Montant en euros">
-
-<button onclick="credit()">Attribuer le solde</button>
-
-<h3>Liste des clients</h3>
-<div id="clients">Chargement...</div>
-</div>
-
-<div id="message"></div>
-
-<button class="secondary" onclick="refresh()">Actualiser</button>
-<button onclick="logout()">Déconnexion</button>
-
-<!-- NAVIGATION VISIBLE UNIQUEMENT APRÈS CONNEXION -->
-<nav class="bottom-nav">
-  <button class="active" onclick="goTo('homeSection',this)">
-    <span class="nav-icon">⌂</span>
-    <span>Accueil</span>
-  </button>
-  <button onclick="goTo('accountsSection',this)">
-    <span class="nav-icon">▣</span>
-    <span>Comptes</span>
-  </button>
-  <button onclick="goTo('historySection',this)">
-    <span class="nav-icon">◷</span>
-    <span>Historique</span>
-  </button>
-  <button onclick="goTo('profileSection',this)">
-    <span class="nav-icon">♙</span>
-    <span>Profil</span>
-  </button>
-</nav>
-
+<!-- COMPTES -->
+<section id="accountsPage" class="page hidden">
+  <div class="section-title">Mes comptes</div>
+  <div class="card balance-card">
+    <div class="small">SOLDE VIRTUEL</div>
+    <div class="balance" id="accountBalance">0,00 €</div>
+    <div class="small">Devise : EUR</div>
+  </div>
+  <div class="card">
+    <div class="row"><strong style="font-size:13px">Identifiant de compte virtuel</strong><i data-lucide="credit-card"></i></div>
+    <p style="font-weight:800;letter-spacing:1px;margin:17px 0" id="virtualIban">BNP-VIRTUEL-0000</p>
+    <button class="secondary" onclick="copyIban()">Copier l'identifiant</button>
+    <div class="notice">Identifiant fictif commun aux utilisateurs de cette application. Il ne s'agit pas d'un IBAN bancaire et il ne peut recevoir aucun virement réel.</div>
+  </div>
 </section>
 
-<div class="card notice">
-<strong>Information importante</strong>
-<p>BNP Paribas.Ne communiquer jamais vos information personnelle</p>
-</div>
+<!-- HISTORIQUE -->
+<section id="historyPage" class="page hidden">
+  <div class="section-title">Historique des opérations</div>
+  <div class="card" id="allTransactions"><p class="small">Chargement...</p></div>
+</section>
+
+<!-- PROFIL -->
+<section id="profilePage" class="page hidden">
+  <div class="section-title">Mon profil</div>
+  <div class="card">
+    <div class="tx-icon"><i data-lucide="user-round"></i></div>
+    <p class="small">Adresse e-mail</p>
+    <strong id="profileEmail"></strong>
+    <p class="small" style="margin-top:20px">Type de compte</p>
+    <strong id="profileRole">Client</strong>
+  </div>
+  <div class="card">
+    <button class="primary danger" onclick="logout()">Se déconnecter</button>
+  </div>
+  <div class="disclaimer">BNP Espace Virtuel .Ne communiquer vos informations personnelles.</div>
+</section>
+
+<!-- DEMANDE DE DEPOT -->
+<section id="depositPage" class="page hidden">
+  <div class="section-title">Demande de dépôt virtuel</div>
+  <div class="card">
+    <p class="small">Votre demande sera transmise à l'administrateur. Seul l'administrateur peut créditer votre solde.</p>
+    <label>Montant demandé (€)</label>
+    <input id="depositAmount" type="number" min="1" step="0.01" placeholder="Ex. 100">
+    <label>Message (facultatif)</label>
+    <input id="depositNote" maxlength="180" placeholder="Précisions sur votre demande">
+    <button class="primary" onclick="sendRequest('deposit')">Envoyer la demande</button>
+  </div>
+</section>
+
+<!-- DEMANDE DE RETRAIT -->
+<section id="withdrawPage" class="page hidden">
+  <div class="section-title">Demande de retrait virtuel</div>
+  <div class="card">
+    <div class="small">Solde virtuel disponible</div>
+    <div id="withdrawBalance" style="font-size:24px;font-weight:800;margin:8px 0 18px">0,00 €</div>
+    <label>Montant demandé (€)</label>
+    <input id="withdrawAmount" type="number" min="1" step="0.01" placeholder="Ex. 50">
+    <label>Message (facultatif)</label>
+    <input id="withdrawNote" maxlength="180" placeholder="Précisions sur votre demande">
+    <button class="primary" onclick="sendRequest('withdraw')">Envoyer la demande</button>
+    <div class="notice">Une demande n'est pas un retrait réel et ne débite pas automatiquement votre solde. Elle doit être examinée par l'administrateur.</div>
+  </div>
+</section>
+
+<!-- TRANSFERT -->
+<section id="transferPage" class="page hidden">
+  <div class="section-title">Transfert virtuel</div>
+  <div class="card">
+    <p class="small">Envoyez un solde virtuel à un autre utilisateur inscrit.</p>
+    <label>E-mail du bénéficiaire</label>
+    <input id="receiverEmail" type="email" placeholder="client@email.com">
+    <label>Montant (€)</label>
+    <input id="transferAmount" type="number" min="0.01" step="0.01" placeholder="Ex. 25">
+    <button class="primary" onclick="transfer()">Confirmer le transfert</button>
+    <div class="notice">Les transferts sont virtuels et ne déplacent aucun argent réel.</div>
+  </div>
+</section>
+
+<!-- ADMINISTRATION -->
+<section id="adminPage" class="page hidden">
+  <div class="section-title">Administration</div>
+  <div class="card">
+    <strong>Attribuer un solde virtuel</strong>
+    <label style="display:block;margin-top:15px">E-mail du client</label>
+    <input id="creditEmail" type="email" placeholder="client@email.com">
+    <label>Montant à créditer (€)</label>
+    <input id="creditAmount" type="number" min="0.01" step="0.01" placeholder="Montant">
+    <button class="primary" onclick="credit()">Attribuer le solde</button>
+  </div>
+  <div class="section-title">Demandes des clients</div>
+  <div class="card" id="adminRequests">Chargement...</div>
+  <div class="section-title">Clients enregistrés</div>
+  <div class="card" id="clientList">Chargement...</div>
+</section>
 
 </main>
 
-<footer>BNP · Espace de gestion </footer>
+<nav class="bottom-nav">
+  <button class="nav-btn active" data-page="homePage" onclick="go('homePage',this)"><i data-lucide="house"></i>Accueil</button>
+  <button class="nav-btn" data-page="accountsPage" onclick="go('accountsPage',this)"><i data-lucide="wallet"></i>Comptes</button>
+  <button class="nav-btn" data-page="historyPage" onclick="go('historyPage',this)"><i data-lucide="history"></i>Historique</button>
+  <button class="nav-btn" data-page="profilePage" onclick="go('profilePage',this)"><i data-lucide="user"></i>Profil</button>
+</nav>
+</div>
 
 <script type="module">
-import { createClient } from
-'https://esm.sh/@supabase/supabase-js@2';
+import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 
 const URL = 'https://hdaeptcaekcifevpurww.supabase.co';
 const KEY = 'sb_publishable_aafHR_VwUzxsjgqzfgCM-w_wOj56lZw';
-
 const db = createClient(URL, KEY);
+
 let currentUser = null;
+let currentBalance = 0;
+let currentTransactions = [];
+let isAdmin = false;
+let chartInstance = null;
 
 const $ = id => document.getElementById(id);
+const money = n => Number(n || 0).toLocaleString('fr-FR',{style:'currency',currency:'EUR'});
+const safe = s => String(s ?? '').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
-const euro = n => Number(n).toLocaleString('fr-FR',{
-  style:'currency',
-  currency:'EUR'
-});
+function toast(message){
+  $('toast').textContent = message;
+  $('toast').classList.add('show');
+  if(navigator.vibrate) navigator.vibrate(35);
+  setTimeout(()=>$('toast').classList.remove('show'),2800);
+}
+function icons(){ if(window.lucide) lucide.createIcons(); }
 
-window.goTo = function(section,button){
-  const target=$(section);
-  if(target){
-    target.scrollIntoView({
-      behavior:'smooth',
-      block:'start'
-    });
-  }
-
-  document.querySelectorAll('.bottom-nav button')
-    .forEach(btn=>btn.classList.remove('active'));
-
-  button.classList.add('active');
+window.go = function(page,button){
+  document.querySelectorAll('.page').forEach(p=>p.classList.add('hidden'));
+  $(page)?.classList.remove('hidden');
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+  if(button) button.classList.add('active');
+  else document.querySelector(`[data-page="${page}"]`)?.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+  icons();
+  if(page==='historyPage') renderTransactions($('allTransactions'),currentTransactions);
+  if(page==='adminPage' && isAdmin) loadAdmin();
 };
 
-function message(text){
-  $('message').textContent=text;
-}
-
-function authMessage(text){
-  $('authMessage').textContent=text;
-}
-
-function showDashboard(){
-  $('auth').classList.add('hidden');
-  $('dashboard').classList.remove('hidden');
-  document.body.classList.add('dashboard-open');
-}
-
-function showLogin(){
-  $('dashboard').classList.add('hidden');
-  $('auth').classList.remove('hidden');
-  document.body.classList.remove('dashboard-open');
-}
-
-window.signUp = async function(){
-  const email=$('email').value.trim();
-  const password=$('password').value;
-
-  if(!email || password.length<8){
-    authMessage('Saisissez un e-mail et un mot de passe de 8 caractères minimum.');
-    return;
+function showApp(){
+  $('authScreen').classList.add('hidden');
+  $('app').classList.remove('hidden');
+  $('userEmail').textContent=currentUser.email;
+  $('profileEmail').textContent=currentUser.email;
+  $('profileRole').textContent=isAdmin?'Administrateur':'Client';
+  $('adminNav')?.remove();
+  if(isAdmin){
+    const nav=document.querySelector('.bottom-nav');
+    if(!document.getElementById('adminNav')){
+      const b=document.createElement('button');
+      b.id='adminNav';b.className='nav-btn';
+      b.innerHTML='<i data-lucide="shield-check"></i>Admin';
+      b.onclick=()=>go('adminPage',b);
+      nav.appendChild(b);
+    }
   }
+  icons();
+}
+function showAuth(){
+  $('app').classList.add('hidden');
+  $('authScreen').classList.remove('hidden');
+}
 
+window.signUp=async function(){
+  const email=$('email').value.trim(),password=$('password').value;
+  if(!email||password.length<6){toast('Saisissez un e-mail et un mot de passe de 6 caractères minimum.');return}
   const {error}=await db.auth.signUp({email,password});
-
-  authMessage(error ? error.message :
-    'Inscription envoyée. Vérifiez votre e-mail si une confirmation est demandée.');
+  if(error){toast(error.message);return}
+  toast('Inscription envoyée. Vérifiez votre e-mail si une confirmation est demandée.');
 };
-
-window.signIn = async function(){
-  const {data,error}=await db.auth.signInWithPassword({
-    email:$('email').value.trim(),
-    password:$('password').value
-  });
-
-  if(error){
-    authMessage(error.message);
-    return;
-  }
-
+window.signIn=async function(){
+  const email=$('email').value.trim(),password=$('password').value;
+  const {data,error}=await db.auth.signInWithPassword({email,password});
+  if(error){toast(error.message);return}
   await loadAccount(data.user);
 };
-
-window.logout = async function(){
-  await db.auth.signOut();
-  currentUser=null;
-  showLogin();
+window.logout=async function(){
+  await db.auth.signOut();currentUser=null;showAuth();toast('Déconnexion effectuée.');
 };
 
 async function loadAccount(user){
   currentUser=user;
-  showDashboard();
-
-  $('userEmail').textContent=user.email;
-  $('profileEmail').textContent=user.email;
-
-  const {data:profile,error:profileError}=await db
-    .from('profiles')
-    .select('role')
-    .eq('user_id',user.id)
-    .single();
-
-  if(profileError){
-    message('Profil en préparation. Actualisez dans quelques instants.');
-    return;
-  }
-
-  $('adminPanel').classList.toggle('hidden',profile.role!=='admin');
-
+  const {data:profile,error:profileError}=await db.from('profiles').select('role').eq('user_id',user.id).single();
+  if(profileError){toast('Profil introuvable : '+profileError.message);return}
+  isAdmin=profile?.role==='admin';
+  showApp();
   await refresh();
-
-  if(profile.role==='admin'){
-    await loadClients();
-  }
 }
-
-window.refresh = async function(){
+async function refresh(){
   if(!currentUser)return;
+  const {data:wallet,error}=await db.from('wallets').select('balance').eq('user_id',currentUser.id).single();
+  if(error){toast('Erreur de chargement du compte : '+error.message);return}
+  currentBalance=Number(wallet.balance||0);
+  $('balance').textContent=money(currentBalance);
+  $('accountBalance').textContent=money(currentBalance);
+  $('withdrawBalance').textContent=money(currentBalance);
 
-  const {data:wallet,error}=await db
-    .from('wallets')
-    .select('balance')
-    .eq('user_id',currentUser.id)
-    .single();
-
-  if(error){
-    message('Impossible de charger le solde : '+error.message);
-    return;
-  }
-
-  $('balance').textContent=euro(wallet.balance);
-  $('accountBalance').textContent=euro(wallet.balance);
-
-  const {data:rows,error:historyError}=await db
-    .from('transactions')
-    .select('*')
+  const {data:tx,error:txError}=await db.from('transactions').select('*')
     .or(`sender_id.eq.${currentUser.id},receiver_id.eq.${currentUser.id}`)
-    .order('created_at',{ascending:false})
-    .limit(30);
-
-  if(historyError){
-    $('history').textContent='Historique indisponible.';
-    return;
-  }
-
-  $('history').innerHTML='';
-
-  if(!rows.length){
-    $('history').textContent='Aucune opération pour le moment.';
-    return;
-  }
-
-  rows.forEach(row=>{
-    const sent=row.sender_id===currentUser.id;
-    const date=new Date(row.created_at).toLocaleString('fr-FR');
-    const item=document.createElement('div');
-
-    item.className='item';
-    item.textContent=
-      (row.operation_type==='credit'?'Crédit virtuel':
-      sent?'Transfert envoyé':'Transfert reçu')
-      +' · '+(sent?'-':'+')+euro(row.amount)
-      +' · '+date+' · '+row.reference;
-
-    $('history').appendChild(item);
-  });
-};
-
-window.transfer = async function(){
-  const email=$('recipient').value.trim();
-  const amount=Number($('transferAmount').value);
-
-  if(!email || !Number.isFinite(amount) || amount<=0){
-    message('Vérifiez le destinataire et le montant.');
-    return;
-  }
-
-  const {error}=await db.rpc('transfer_to_email',{
-    p_email:email,
-    p_amount:amount
-  });
-
-  if(error){
-    message(error.message);
-    return;
-  }
-
-  message('Transfert  effectué.');
-  $('recipient').value='';
-  $('transferAmount').value='';
-
-  await refresh();
-};
-
-window.credit = async function(){
-  const email=$('clientEmail').value.trim();
-  const amount=Number($('creditAmount').value);
-
-  if(!email || !Number.isFinite(amount) || amount<=0){
-    message('Vérifiez l’e-mail et le montant.');
-    return;
-  }
-
-  const {error}=await db.rpc('admin_credit',{
-    p_email:email,
-    p_amount:amount
-  });
-
-  if(error){
-    message(error.message);
-    return;
-  }
-
-  message('Solde virtuel attribué.');
-  $('clientEmail').value='';
-  $('creditAmount').value='';
-
-  await refresh();
-};
-
-async function loadClients(){
-  const {data,error}=await db
-    .from('profiles')
-    .select('email,role,created_at')
-    .order('created_at',{ascending:false});
-
-  if(error){
-    $('clients').textContent='Liste indisponible.';
-    return;
-  }
-
-  $('clients').innerHTML='';
-
-  data.forEach(client=>{
-    const div=document.createElement('div');
-    div.className='item';
-    div.textContent=client.email+' — '+client.role;
-    $('clients').appendChild(div);
-  });
+    .order('created_at',{ascending:false}).limit(300);
+  if(txError){toast('Erreur historique : '+txError.message);return}
+  currentTransactions=tx||[];
+  renderTransactions($('recentTransactions'),currentTransactions.slice(0,5));
+  renderTransactions($('allTransactions'),currentTransactions);
+  drawChart();
 }
-
-const {data:{session}}=await db.auth.getSession();
-
-if(session){
-  await loadAccount(session.user);
+function txTitle(t){
+  if(t.operation_type==='credit')return 'Crédit virtuel';
+  if(t.sender_id===currentUser.id)return 'Transfert envoyé';
+  if(t.receiver_id===currentUser.id)return 'Transfert reçu';
+  return 'Opération virtuelle';
 }
-
-db.auth.onAuthStateChange((event,session)=>{
-  if(event==='SIGNED_OUT'){
-    currentUser=null;
-    showLogin();
-  }
-});
-</script>
-
-</body>
-                                        </html>
+function renderTransactions(target,items){
+  if(!target)return;
+  if(!items?.length){target.innerHTML='<p class="small">Aucune opération enregistrée.</p>';return}
+  target.innerHTML=items.map(t=>{
+    const incoming=t.receiver_id===currentUser.id;
+    const title=txTitle(t);
+    const date=new Date(t.created_at).toLocaleString('fr-FR');
+    const sign=incoming?'+':'−';
+    const ref=t.reference?` · Réf. ${safe(t.reference)}`:'';
+    return `<div class="transaction">
+      <div class="tx-icon"><i data-lucide="${incoming?'arrow-down-left':'arrow-up-right'}"></i></div>
+      <div class="tx-info"><strong>${safe(title)}</strong><small>${safe(date)}${ref}</small></div>
+      <div class="amount ${incoming?'income':'outcome'}">${sign}${money(t.amount)}</div>
+    </div>`;
+  }).join('');
+  icons();
+}
+window.drawChart=function(){
+  const canvas=$('activityChart');
+  if(!canvas||!window.Chart)return;
+  const days=Number($('chartPeriod')?.value||30);
+  const cutoff=Date.now()-days*86400000;
+  const buckets=new Map();
+  for(const t of currentTransactions){
+    const d=new Date(t.created_at);
+    if(d.get
