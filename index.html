@@ -136,7 +136,33 @@ footer{
   font-size:12px;
   padding:20px;
 }
-</style>
+</style> 
+.bottom-nav{
+  position:fixed;
+  bottom:0;
+  left:0;
+  width:100%;
+  display:flex;
+  justify-content:space-around;
+  background:white;
+  padding:12px 5px;
+  box-shadow:0 -3px 15px #0001;
+  z-index:1000;
+}
+.bottom-nav a{
+  text-decoration:none;
+  color:#08734f;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:5px;
+  font-size:21px;
+}
+.bottom-nav span{
+  font-size:11px;
+}
+body{padding-bottom:75px}
+  </style>
 </head>
 
 <body>
@@ -231,7 +257,19 @@ footer{
 
 </main>
 
-<footer>BNP · Espace de gestion de fonds</footer>
+<footer>BNP · Espace de gestion</footer>
+<nav class="bottom-nav">
+  <a href="#auth">⌂<span>Accueil</span></a>
+  <a href="#dashboard">▣<span>Comptes</span></a>
+  <a href="#history">◷<span>Historique</span></a>
+  <a href="#profile">♙<span>Profil</span></a>
+</nav>
+<nav class="bottom-nav">
+  <a href="#auth">⌂<span>Accueil</span></a>
+  <a href="#dashboard">▣<span>Comptes</span></a>
+  <a href="#history">◷<span>Historique</span></a>
+  <a href="#profile">♙<span>Profil</span></a>
+</nav>
 
 <script type="module">
 import { createClient } from
