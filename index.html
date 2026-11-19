@@ -1,77 +1,265 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#08734f">
-  <title>BNP - Espace personnel</title>
-  <style>
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f3f6f5;
-      color: #202b27;
-    }
-    header {
-      background: #08734f;
-      color: white;
-      padding: 25px 20px;
-    }
-    header h1 { margin: 0; font-size: 28px; }
-    header p { margin-bottom: 0; }
-    main { padding: 20px; max-width: 600px; margin: auto; }
-    .card {
-      background: white;
-      border-radius: 15px;
-      padding: 20px;
-      margin-bottom: 16px;
-      box-shadow: 0 3px 12px #0000000c;
-    }
-    .balance { background: #08734f; color: white; }
-    .amount { font-size: 32px; font-weight: bold; margin-top: 12px; }
-    .buttons { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    button {
-      border: 0;
-      border-radius: 10px;
-      padding: 15px;
-      background: #08734f;
-      color: white;
-      font-size: 15px;
-      font-weight: bold;
-    }
-    .notice { font-size: 12px; color: #59665f; }
-    footer { text-align: center; padding: 20px; font-size: 12px; color: #64716b; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#08734f">
+<title>BNP - Espace personnel</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#f2f5f3;color:#26332d;font-family:Arial,sans-serif}
+header{background:#08734f;color:white;padding:23px}
+header h1{margin:0;font-size:28px}
+main{max-width:600px;margin:auto;padding:18px}
+.card{background:white;padding:20px;border-radius:15px;margin:15px 0;box-shadow:0 3px 12px #0001}
+h2{font-size:20px}
+input{width:100%;padding:14px;margin:7px 0 14px;border:1px solid #ccd5cf;border-radius:9px;font-size:15px}
+button{padding:13px;border:0;border-radius:9px;background:#08734f;color:white;font-weight:bold;font-size:15px;margin:5px 3px;cursor:pointer}
+.secondary{background:#e7efea;color:#08734f}
+.amount{font-size:32px;font-weight:bold}
+small,.notice{font-size:12px;color:#64736a}
+.item{padding:12px 0;border-bottom:1px solid #eee}
+.hidden{display:none}
+#message{padding:10px;border-radius:8px;background:#edf4ef;margin:10px 0}
+</style>
 </head>
 <body>
-  <header>
-    <h1>BNP</h1>
-    <p>Votre espace financier personnel</p>
-  </header>
-  <main>
-    <section class="card balance">
-      <p>Solde disponible</p>
-      <div class="amount">0,00 €</div>
-      <p>Compte virtuel</p>
-    </section>
-    <section class="card">
-      <h3>Mes opérations</h3>
-      <div class="buttons">
-        <button>Envoyer</button>
-        <button>Recevoir</button>
-        <button>Mes cartes</button>
-        <button>Historique</button>
-      </div>
-    </section>
-    <section class="card">
-      <h3>Mon compte</h3>
-      <p>Profil personnel</p>
-      <p>Notifications</p>
-      <p>Assistance</p>
-    </section>
-    <p class="notice">Prototype indépendant — soldes Réel. Affilié à BNP Paribas.</p>
-  </main>
-  <footer>Prototype BNP · Version initiale</footer>
+<header>
+<h1>BNP</h1>
+<p>Votre espace personnel</p>
+</header>
+<main>
+
+<section id="auth">
+<div class="card">
+<h2>Bienvenue</h2>
+<p>Connectez-vous à votre espace.</p>
+<label>Adresse e-mail</label>
+<input id="email" type="email" placeholder="Votre adresse e-mail">
+<label>Mot de passe</label>
+<input id="password" type="password" placeholder="Votre mot de passe">
+<button onclick="signIn()">Se connecter</button>
+<button class="secondary" onclick="signUp()">Créer un compte</button>
+<div id="authMessage"></div>
+</div>
+</section>
+
+<section id="dashboard" class="hidden">
+<div class="card">
+<p>Bonjour, <strong id="userEmail"></strong></p>
+<p>Solde disponible — Solde virtuel</p>
+<div class="amount" id="balance">0,00 €</div>
+</div>
+
+<div class="card">
+<h2>Envoyer un transfert virtuel</h2>
+<label>E-mail du destinataire</label>
+<input id="recipient" type="email" placeholder="Adresse e-mail du client">
+<label>Montant en euros</label>
+<input id="transferAmount" type="number" min="0.01" step="0.01" placeholder="Montant">
+<button onclick="transfer()">Envoyer</button>
+</div>
+
+<div class="card">
+<h2>Historique des opérations</h2>
+<div id="history">Chargement...</div>
+</div>
+
+<div id="adminPanel" class="card hidden">
+<h2>Espace administrateur</h2>
+<p>Attribution de soldes virtuels aux clients.</p>
+<label>E-mail du client</label>
+<input id="clientEmail" type="email" placeholder="E-mail du client">
+<label>Montant à attribuer</label>
+<input id="creditAmount" type="number" min="0.01" step="0.01" placeholder="Montant en euros">
+<button onclick="credit()">Attribuer le solde</button>
+<h3>Liste des clients</h3>
+<div id="clients">Chargement...</div>
+</div>
+
+<div id="message"></div>
+<button class="secondary" onclick="refresh()">Actualiser</button>
+<button onclick="logout()">Déconnexion</button>
+</section>
+
+<script type="module">
+import { createClient } from
+'https://esm.sh/@supabase/supabase-js@2';
+
+const URL = 'https://hdaeptcaekcifevpurww.supabase.co';
+const KEY = 'sb_publishable_aafHR_VwUzxsjgqzfgCM-w_wOj56lZw';
+
+const db = createClient(URL, KEY);
+let currentUser = null;
+
+const $ = id => document.getElementById(id);
+const euro = n => Number(n).toLocaleString('fr-FR',{
+  style:'currency',currency:'EUR'
+});
+
+function message(text){
+  $('message').textContent=text;
+}
+function authMessage(text){
+  $('authMessage').textContent=text;
+}
+
+window.signUp = async function(){
+  const email=$('email').value.trim();
+  const password=$('password').value;
+  if(!email || password.length<8){
+    authMessage('Saisissez un e-mail et un mot de passe de 8 caractères minimum.');
+    return;
+  }
+  const {error}=await db.auth.signUp({email,password});
+  authMessage(error ? error.message :
+    'Inscription envoyée. Vérifiez votre e-mail si une confirmation est demandée.');
+};
+
+window.signIn = async function(){
+  const {data,error}=await db.auth.signInWithPassword({
+    email:$('email').value.trim(),
+    password:$('password').value
+  });
+  if(error){authMessage(error.message);return;}
+  await loadAccount(data.user);
+};
+
+window.logout = async function(){
+  await db.auth.signOut();
+  currentUser=null;
+  $('dashboard').classList.add('hidden');
+  $('auth').classList.remove('hidden');
+};
+
+async function loadAccount(user){
+  currentUser=user;
+  $('auth').classList.add('hidden');
+  $('dashboard').classList.remove('hidden');
+  $('userEmail').textContent=user.email;
+
+  const {data:profile,error:profileError}=await db
+    .from('profiles').select('role')
+    .eq('user_id',user.id).single();
+
+  if(profileError){
+    message('Profil en préparation. Actualisez dans quelques instants.');
+    return;
+  }
+
+  $('adminPanel').classList.toggle('hidden',profile.role!=='admin');
+  await refresh();
+  if(profile.role==='admin') await loadClients();
+}
+
+window.refresh = async function(){
+  if(!currentUser)return;
+
+  const {data:wallet,error}=await db
+    .from('wallets').select('balance')
+    .eq('user_id',currentUser.id).single();
+
+  if(error){
+    message('Impossible de charger le solde : '+error.message);
+    return;
+  }
+
+  $('balance').textContent=euro(wallet.balance);
+
+  const {data:rows,error:historyError}=await db
+    .from('transactions')
+    .select('*')
+    .or(`sender_id.eq.${currentUser.id},receiver_id.eq.${currentUser.id}`)
+    .order('created_at',{ascending:false})
+    .limit(30);
+
+  if(historyError){
+    $('history').textContent='Historique indisponible.';
+    return;
+  }
+
+  $('history').innerHTML='';
+  if(!rows.length){
+    $('history').textContent='Aucune opération pour le moment.';
+    return;
+  }
+
+  rows.forEach(row=>{
+    const sent=row.sender_id===currentUser.id;
+    const date=new Date(row.created_at).toLocaleString('fr-FR');
+    const item=document.createElement('div');
+    item.className='item';
+    item.textContent=
+      (row.operation_type==='credit'?'Crédit virtuel':
+      sent?'Transfert  envoyé':'Transfert  reçu')
+      +' · '+(sent?'-':'+')+euro(row.amount)
+      +' · '+date+' · '+row.reference;
+    $('history').appendChild(item);
+  });
+};
+
+window.transfer = async function(){
+  const email=$('recipient').value.trim();
+  const amount=Number($('transferAmount').value);
+  if(!email || !Number.isFinite(amount) || amount<=0){
+    message('Vérifiez le destinataire et le montant.');
+    return;
+  }
+  const {error}=await db.rpc('transfer_to_email',{
+    p_email:email,p_amount:amount
+  });
+  if(error){message(error.message);return;}
+  message('Transfert effectué.');
+  $('recipient').value='';
+  $('transferAmount').value='';
+  await refresh();
+};
+
+window.credit = async function(){
+  const email=$('clientEmail').value.trim();
+  const amount=Number($('creditAmount').value);
+  if(!email || !Number.isFinite(amount) || amount<=0){
+    message('Vérifiez l’e-mail et le montant.');
+    return;
+  }
+  const {error}=await db.rpc('admin_credit',{
+    p_email:email,p_amount:amount
+  });
+  if(error){message(error.message);return;}
+  message('Solde virtuel attribué.');
+  $('clientEmail').value='';
+  $('creditAmount').value='';
+  await refresh();
+};
+
+async function loadClients(){
+  const {data,error}=await db
+    .from('profiles').select('email,role,created_at')
+    .order('created_at',{ascending:false});
+
+  if(error){
+    $('clients').textContent='Liste indisponible.';
+    return;
+  }
+  $('clients').innerHTML='';
+  data.forEach(client=>{
+    const div=document.createElement('div');
+    div.className='item';
+    div.textContent=client.email+' — '+client.role;
+    $('clients').appendChild(div);
+  });
+}
+
+const {data:{session}}=await db.auth.getSession();
+if(session) await loadAccount(session.user);
+
+db.auth.onAuthStateChange((event,session)=>{
+  if(event==='SIGNED_OUT'){
+    currentUser=null;
+    $('dashboard').classList.add('hidden');
+    $('auth').classList.remove('hidden');
+  }
+});
+</script>
 </body>
-</html>
+  </html>
