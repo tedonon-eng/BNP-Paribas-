@@ -327,22 +327,22 @@ th{color:var(--muted);font-size:10px}
 <header class="topbar">
   <div class="topline">
     <div class="brand">
-      <div class="brand-mark">✦</div>
-      <div>ESPACE PERSONNEL
-        <small>GESTION VIRTUELLE</small>
+      <div class="brand-mark">🪙✦</div>
+      <div>ESPACE PERSONNEL BANCAIRE
+        <small>GESTION DU  COMPTE  BANCAIRE</small>
       </div>
     </div>
     <button id="logoutBtn" class="btn btn-light hidden">Déconnexion</button>
   </div>
-  <p>Votre espace personnel de gestion .</p>
+  <p>Votre espace personnel de gestion  bancaire .</p>
 </header>
 <main>
   
 <!-- CONNEXION ET INSCRIPTION -->
 <div id="authScreen">
   <div class="card" style="margin-top:25px">
-    <h2>Bienvenue dans votre espace</h2>
-    <p class="muted">Accédez à votre compte ou créez votre profil.</p>
+    <h2>Bienvenue dans votre espace bancaire</h2>
+    <p class="muted">Accédez à votre compte ou créez un compte.</p>
 
     <div style="display:flex;gap:8px;margin:16px 0">
       <button class="btn" id="showLoginBtn" style="flex:1">Connexion</button>
@@ -381,7 +381,7 @@ th{color:var(--muted);font-size:10px}
 <!-- APPLICATION -->
 <div id="appScreen" class="hidden">
   <div class="virtual-note">
-    <strong>Application entièrement personnelle.</strong>
+    <strong>BNP Paribas Compte Bancaire contesté .</strong>
     Les comptes , identifiant sont personnels.
     Argent réel, virement bancaire .
   </div>
@@ -963,7 +963,98 @@ async function loadRequests() {
     list.appendChild(item);
   });
 }
+/* GESTION ADMIN DES IDENTIFIANTS FICTIFS */
+let adminClients = [];
 
+async function loadAdminClients() {
+  if (currentProfile?.role !== "admin") return;
+
+  const select = $("adminClientSelect");
+  select.innerHTML = '<option value="">Chargement…</option>';
+
+  const { data, error } = await db.rpc("admin_list_virtual_clients");
+
+  if (error) {
+    select.innerHTML = '<option value="">Impossible de charger les clients</option>';
+    showStatus("identifierAdminStatus", error.message, true);
+    return;
+  }
+
+  adminClients = data || [];
+  select.innerHTML = '<option value="">Sélectionner un client</option>';
+
+  adminClients.forEach(client => {
+    const option = document.createElement("option");
+    option.value = client.user_id;
+    option.textContent =
+      [client.first_name, client.last_name].filter(Boolean).join(" ") ||
+      client.email ||
+      client.user_id;
+
+    if (client.email) option.textContent += " — " + client.email;
+    select.appendChild(option);
+  });
+
+  if (!adminClients.length) {
+    select.innerHTML = '<option value="">Aucun client trouvé</option>';
+  }
+}
+
+function loadSelectedAdminClient() {
+  const client = adminClients.find(
+    item => item.user_id === $("adminClientSelect").value
+  );
+
+  $("adminVirtualIban").value = client?.virtual_iban || "";
+  $("adminVirtualTaxCode").value = client?.virtual_tax_code || "";
+
+  showStatus(
+    "identifierAdminStatus",
+    client ? "Modifiez les identifiants fictifs puis enregistrez." : ""
+  );
+}
+
+async function saveVirtualIdentifiers() {
+  if (currentProfile?.role !== "admin") {
+    showStatus("identifierAdminStatus", "Accès administrateur refusé.", true);
+    return;
+  }
+
+  const userId = $("adminClientSelect").value;
+  const virtualIban = $("adminVirtualIban").value.trim();
+  const virtualTaxCode = $("adminVirtualTaxCode").value.trim();
+
+  if (!userId) {
+    showStatus("identifierAdminStatus", "Sélectionnez un client.", true);
+    return;
+  }
+
+  if (!virtualIban || !virtualTaxCode) {
+    showStatus("identifierAdminStatus", "Remplissez les deux champs.", true);
+    return;
+  }
+
+  const { error } = await db.rpc("admin_update_virtual_identifiers", {
+    p_user_id: userId,
+    p_virtual_iban: virtualIban,
+    p_virtual_tax_code: virtualTaxCode
+  });
+
+  if (error) {
+    showStatus("identifierAdminStatus", error.message, true);
+    return;
+  }
+
+  const client = adminClients.find(item => item.user_id === userId);
+
+  if (client) {
+    client.virtual_iban = virtualIban;
+    client.virtual_tax_code = virtualTaxCode;
+  }
+
+  showStatus("identifierAdminStatus", "Identifiants fictifs enregistrés.");
+  toast("Identifiants du client mis à jour.");
+  }
 /* CONNEXION */
 async function signIn() {
   const email = $("loginEmail").value.trim();
