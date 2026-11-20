@@ -470,6 +470,59 @@ th{color:var(--muted);font-size:10px}
   box-shadow:0 12px 25px #001b1660;
   opacity:.9;
   }
+  /* FINITION PROFESSIONNELLE DE L'ENTETE */
+.topbar{
+  position:relative;
+  overflow:hidden;
+  padding:25px 20px 22px;
+  border-radius:0 0 24px 24px;
+  background:linear-gradient(135deg,#052e27,#087456 65%,#0b4437);
+  color:#fff;
+  box-shadow:0 12px 30px #062d2730;
+}
+
+.topbar::after{
+  content:"";
+  position:absolute;
+  width:190px;
+  height:190px;
+  right:-75px;
+  top:-105px;
+  border:1px solid #ffffff35;
+  border-radius:50%;
+  box-shadow:0 0 0 18px #ffffff08,0 0 0 38px #ffffff06;
+}
+
+.topbar .brand-mark{
+  width:43px;
+  height:43px;
+  display:grid;
+  place-items:center;
+  border-radius:13px;
+  background:linear-gradient(145deg,#f2dfad,#b99753);
+  color:#123c30;
+  box-shadow:0 7px 18px #001b1745;
+  font-size:24px;
+}
+
+.topbar .brand{
+  position:relative;
+  z-index:2;
+  align-items:center;
+  gap:13px;
+}
+
+.topbar small{
+  color:#e5d6ae;
+  letter-spacing:1.5px;
+}
+
+.topbar p{
+  position:relative;
+  z-index:2;
+  color:#e5f1ec;
+  margin-top:15px;
+}
 </style>
   
 </head>
