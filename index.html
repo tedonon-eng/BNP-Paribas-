@@ -571,10 +571,28 @@ th{color:var(--muted);font-size:10px}
     <div class="card">
       <h2>Administration</h2>
       <p class="muted">Outils réservés au compte administrateur de la démonstration.</p>
-      <h3>Créditer un compte virtuel</h3>
+      <h3>Modifier les identifiants fictifs d’un client</h3>
+
+<label>Choisir un client</label>
+<select id="adminClientSelect">
+  <option value="">Sélectionner un client</option>
+</select>
+
+<label>IBAN</label>
+<input type="text" id="adminVirtualIban" placeholder="IBAN de démonstration">
+
+<label>Code fiscal</label>
+<input type="text" id="adminVirtualTaxCode" placeholder="Code fiscal de démonstration">
+
+<button id="saveVirtualIdentifiersBtn" class="btn btn-full">
+  Enregistrer les identifiants
+</button>
+
+<div id="identifierAdminStatus" class="status"></div>
+      <h3>Créditer un compte</h3>
       <label>E-mail du compte</label>
       <input type="email" id="adminEmail" placeholder="utilisateur@email.com">
-      <label>Montant virtuel</label>
+      <label>Montant</label>
       <input type="number" id="adminAmount" min="0.01" step="0.01" placeholder="0,00">
       <button id="adminCreditBtn" class="btn btn-full">Créditer le compte virtuel</button>
       <div id="adminStatus" class="status"></div>
