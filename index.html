@@ -813,7 +813,9 @@ async function loadAccount() {
   await loadTransactions();
 
   if (profile.role === "admin") {
-    await loadRequests();
+  await loadRequests();
+  await loadAdminClients();
+  }
   }
 }
 
