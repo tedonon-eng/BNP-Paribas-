@@ -650,6 +650,61 @@ th{color:var(--muted);font-size:10px}
       </div>
     </div>
 
+<div class="card">
+  <div class="section-title">📊 Marchés financiers</div>
+  <p class="muted">Suivi des marchés avec TradingView.</p>
+
+  <div class="tradingview-widget-container" style="width:100%;">
+    <div class="tradingview-widget-container__widget"></div>
+    <div class="tradingview-widget-copyright">
+      <a href="https://www.tradingview.com/markets/" target="_blank" rel="noopener">
+        Données de marché par TradingView
+      </a>
+    </div>
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
+    {
+      "colorTheme": "light",
+      "dateRange": "12M",
+      "locale": "fr",
+      "isTransparent": false,
+      "showFloatingTooltip": false,
+      "width": "100%",
+      "height": "650",
+      "tabs": [
+        {
+          "title": "Indices",
+          "symbols": [
+            {"s": "FOREXCOM:SPXUSD", "d": "S&P 500"},
+            {"s": "FOREXCOM:NSXUSD", "d": "NASDAQ 100"},
+            {"s": "EURONEXT:PX1", "d": "CAC 40"}
+          ],
+          "originalTitle": "Indices"
+        },
+        {
+          "title": "Matières premières",
+          "symbols": [
+            {"s": "NYMEX:CL1!", "d": "Pétrole WTI"},
+            {"s": "ICEEUR:BRN1!", "d": "Pétrole Brent"},
+            {"s": "COMEX:GC1!", "d": "Or"}
+          ],
+          "originalTitle": "Futures"
+        },
+        {
+          "title": "Devises",
+          "symbols": [
+            {"s": "FX:EURUSD", "d": "EUR / USD"},
+            {"s": "OANDA:XAUUSD", "d": "Or / Dollar"}
+          ],
+          "originalTitle": "Forex"
+        }
+      ],
+      "showSymbolLogo": true,
+      "showChart": true
+    }
+    </script>
+  </div>
+</div>
+    
     <div class="card">
       <div class="section-title">Aperçu du compte</div>
       <div class="stat-grid">
