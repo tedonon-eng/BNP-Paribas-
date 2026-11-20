@@ -1323,7 +1323,8 @@ async function initializeApp() {
     $("depositBtn").addEventListener("click", () => createRequest("deposit"));
     $("withdrawBtn").addEventListener("click", () => createRequest("withdraw"));
     $("adminCreditBtn").addEventListener("click", adminCredit);
-
+    $("adminClientSelect").addEventListener("change", loadSelectedAdminClient);
+$("saveVirtualIdentifiersBtn").addEventListener("click", saveVirtualIdentifiers);
     loadSettings();
 
     const {data, error} = await db.auth.getSession();
