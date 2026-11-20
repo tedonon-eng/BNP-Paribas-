@@ -621,7 +621,17 @@ th{color:var(--muted);font-size:10px}
   <section id="historySection" class="section">
     <div class="card">
       <h2>Historique des opérations</h2>
-      <p class="muted">Liste des mouvements de votre compte.</p>
+      <p class="muted">Consultez et recherchez vos opérations virtuelles.</p>
+
+<div class="history-filters">
+  <input type="search" id="historySearch" placeholder="🔎 Rechercher une opération">
+
+  <select id="historyType">
+    <option value="all">Toutes les opérations</option>
+    <option value="credit">Entrées</option>
+    <option value="debit">Sorties</option>
+  </select>
+</div>
       <div class="table-wrap">
         <table>
           <thead>
