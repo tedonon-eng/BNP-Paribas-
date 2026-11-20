@@ -334,7 +334,7 @@ th{color:var(--muted);font-size:10px}
     </div>
     <button id="logoutBtn" class="btn btn-light hidden">Déconnexion</button>
   </div>
-  <p>Votre espace personnel de gestion et de suivi virtuel.</p>
+  <p>Votre espace personnel de gestion .</p>
 </header>
 <main>
   
@@ -342,7 +342,7 @@ th{color:var(--muted);font-size:10px}
 <div id="authScreen">
   <div class="card" style="margin-top:25px">
     <h2>Bienvenue dans votre espace</h2>
-    <p class="muted">Accédez à votre compte virtuel ou créez votre profil.</p>
+    <p class="muted">Accédez à votre compte ou créez votre profil.</p>
 
     <div style="display:flex;gap:8px;margin:16px 0">
       <button class="btn" id="showLoginBtn" style="flex:1">Connexion</button>
@@ -381,21 +381,20 @@ th{color:var(--muted);font-size:10px}
 <!-- APPLICATION -->
 <div id="appScreen" class="hidden">
   <div class="virtual-note">
-    <strong>Application indépendante de démonstration.</strong>
-    Les comptes, identifiants, soldes et opérations présentés ici sont fictifs.
-    Aucun argent réel, virement bancaire réel ou retrait réel n'est possible.
-    Le code fiscal et l'IBAN affichés sont des exemples non officiels et non utilisables.
+    <strong>Application entièrement personnelle.</strong>
+    Les comptes , identifiant sont personnels.
+    Argent réel, virement bancaire .
   </div>
 
   <!-- ACCUEIL -->
   <section id="homeSection" class="section active">
     <div class="balance-card">
       <div class="balance-head">
-        <span>Solde virtuel disponible</span>
-        <span>COMPTE DÉMO</span>
+        <span>Solde disponible</span>
+        <span>COMPTE RÉEL</span>
       </div>
       <div class="balance-amount" id="balance">0,00 €</div>
-      <div class="balance-foot">Portefeuille de démonstration</div>
+      <div class="balance-foot">Portefeuille </div>
     </div>
 
     <div class="card welcome">
@@ -421,11 +420,11 @@ th{color:var(--muted);font-size:10px}
       <div class="stat-grid">
         <div class="stat">
           <small>Type de compte</small>
-          <strong>Virtuel</strong>
+          <strong>Réel</strong>
         </div>
         <div class="stat">
           <small>Statut</small>
-          <strong><span class="pill">Démo active</span></strong>
+          <strong><span class="pill">Réel active</span></strong>
         </div>
         <div class="stat">
           <small>Identifiant</small>
@@ -453,7 +452,7 @@ th{color:var(--muted);font-size:10px}
         <div>
           <h2 id="profileFullName">Mon profil</h2>
           <p id="profileEmail">Adresse e-mail</p>
-          <span class="pill">Profil virtuel</span>
+          <span class="pill">Profil </span>
         </div>
       </div>
 
@@ -469,27 +468,27 @@ th{color:var(--muted);font-size:10px}
     </div>
 
     <div class="card">
-      <div class="section-title">Identifiants de démonstration</div>
-      <label>Identifiant personnel fictif</label>
+      <div class="section-title">IBAN </div>
+      <label>Code Fiscal </label>
       <div class="id-row"><strong id="profileAccountId">—</strong><span>▣</span></div>
-      <label>IBAN de démonstration — non bancaire</label>
-      <div class="id-row"><strong id="virtualIban">—</strong><span>▣</span></div>
-      <label>Code fiscal de démonstration — format illustratif</label>
+      <label>IBAN bancaire</label>
+      <div class="id-row"><strong id="Iban">—</strong><span>▣</span></div>
+      <label>Code fiscal</label>
       <div class="id-row"><strong id="demoTaxCode">—</strong><span>▣</span></div>
-      <p class="muted">Ces références sont fictives. Elles ne constituent ni un IBAN valide ni un numéro fiscal officiel libanais.</p>
+      <p class="muted">🪙</p>
     </div>
   </section>
 
   <!-- VIREMENT -->
   <section id="transferSection" class="section">
     <div class="card">
-      <h2>Virement virtuel</h2>
-      <p class="muted">Transfert d'unités fictives entre utilisateurs de la démonstration.</p>
+      <h2>Virement 🪙</h2>
+      <p class="muted">Transfert d'argent.</p>
       <label>E-mail du destinataire</label>
       <input type="email" id="transferEmail" placeholder="destinataire@email.com">
-      <label>Montant virtuel en euros</label>
+      <label>Montant en euros</label>
       <input type="number" id="transferAmount" min="0.01" step="0.01" placeholder="0,00">
-      <button id="transferBtn" class="btn btn-full">Effectuer le transfert virtuel</button>
+      <button id="transferBtn" class="btn btn-full">Effectuer le transfert</button>
       <div id="transferStatus" class="status"></div>
     </div>
   </section>
@@ -497,9 +496,9 @@ th{color:var(--muted);font-size:10px}
   <!-- DÉPÔT -->
   <section id="depositSection" class="section">
     <div class="card">
-      <h2>Demande de crédit virtuel</h2>
-      <p class="muted">Soumettez une demande à l'administrateur de la démonstration.</p>
-      <label>Montant virtuel</label>
+      <h2>Demande de crédit</h2>
+      <p class="muted">Soumettez une demande à la banque.</p>
+      <label>Montant </label>
       <input type="number" id="depositAmount" min="0.01" step="0.01" placeholder="0,00">
       <label>Commentaire</label>
       <textarea id="depositNote" placeholder="Votre commentaire facultatif"></textarea>
@@ -511,9 +510,9 @@ th{color:var(--muted);font-size:10px}
   <!-- RETRAIT -->
   <section id="withdrawSection" class="section">
     <div class="card">
-      <h2>Demande de retrait virtuel</h2>
-      <p class="muted">Cette demande est uniquement simulée. Aucun argent réel ne sera versé.</p>
-      <label>Montant virtuel</label>
+      <h2>Demande de retrait</h2>
+      <p class="muted">Demande</p>
+      <label>Montant</label>
       <input type="number" id="withdrawAmount" min="0.01" step="0.01" placeholder="0,00">
       <label>Commentaire</label>
       <textarea id="withdrawNote" placeholder="Votre commentaire facultatif"></textarea>
@@ -526,7 +525,7 @@ th{color:var(--muted);font-size:10px}
   <section id="historySection" class="section">
     <div class="card">
       <h2>Historique des opérations</h2>
-      <p class="muted">Liste des mouvements virtuels de votre compte.</p>
+      <p class="muted">Liste des mouvements de votre compte.</p>
       <div class="table-wrap">
         <table>
           <thead>
@@ -562,7 +561,7 @@ th{color:var(--muted);font-size:10px}
     </div>
     <div class="card">
       <h2>Sécurité</h2>
-      <p class="muted">Votre connexion est gérée par le service d'authentification Supabase.</p>
+      <p class="muted">Votre connexion est gérée par le service d'authentification BNP Paribas.</p>
       <button id="settingsLogoutBtn" class="btn btn-danger btn-full">Se déconnecter</button>
     </div>
   </section>
@@ -662,15 +661,15 @@ function escapeHTML(value) {
 
 /* IDENTIFIANTS FICTIFS */
 function accountReference(userId) {
-  return "DEMO-" + userId.replace(/-/g,"").slice(0,10).toUpperCase();
+  return "BNP Paribas-" + userId.replace(/-/g,"").slice(0,10).toUpperCase();
 }
 
 function demoIban(userId) {
-  return "DEMO-LB-" + userId.replace(/-/g,"").slice(0,18).toUpperCase();
+  return "BNP Paribas-LB-" + userId.replace(/-/g,"").slice(0,18).toUpperCase();
 }
 
 function demoTaxCode(userId) {
-  return "DEMO-LBN-" + userId.replace(/-/g,"").slice(0,10).toUpperCase();
+  return "BNP Paribas-LBN-" + userId.replace(/-/g,"").slice(0,10).toUpperCase();
 }
 
 /* NAVIGATION */
