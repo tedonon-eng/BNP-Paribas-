@@ -380,6 +380,96 @@ th{color:var(--muted);font-size:10px}
   color:var(--text);
   font-size:13px;
 }
+  /* ACCUEIL MODERNE - VISUEL 3D */
+.auth-visual{
+  position:relative;
+  min-height:230px;
+  margin:20px 0;
+  border-radius:22px;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:
+    radial-gradient(circle at 75% 25%,#39a987 0,transparent 35%),
+    linear-gradient(135deg,#062d27,#087557 60%,#0b3d32);
+  perspective:900px;
+}
+
+.auth-visual::before,
+.auth-visual::after{
+  content:"";
+  position:absolute;
+  border-radius:50%;
+  border:1px solid #ffffff25;
+}
+
+.auth-visual::before{
+  width:230px;
+  height:230px;
+  right:-65px;
+  top:-90px;
+}
+
+.auth-visual::after{
+  width:170px;
+  height:170px;
+  left:-65px;
+  bottom:-90px;
+}
+
+.card-3d{
+  position:relative;
+  z-index:2;
+  width:245px;
+  height:150px;
+  padding:20px;
+  border-radius:17px;
+  color:white;
+  background:linear-gradient(135deg,#d9c18a,#a88748 45%,#e8d6a9);
+  box-shadow:0 22px 35px #001b1680;
+  transform:rotateY(-16deg) rotateX(9deg) rotateZ(-7deg);
+  border:1px solid #ffffff80;
+}
+
+.card-3d-top{
+  display:flex;
+  justify-content:space-between;
+  font-size:11px;
+  font-weight:bold;
+  color:#24382f;
+}
+
+.card-chip{
+  width:35px;
+  height:26px;
+  margin-top:23px;
+  border-radius:6px;
+  background:linear-gradient(135deg,#fff0bd,#a88a4b);
+  border:1px solid #8e7440;
+}
+
+.card-3d-bottom{
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  margin-top:18px;
+  color:#26382f;
+  font-size:10px;
+  font-weight:bold;
+}
+
+.card-orbit{
+  position:absolute;
+  width:65px;
+  height:65px;
+  right:22px;
+  bottom:22px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#fff2c8,#c69c50);
+  box-shadow:0 12px 25px #001b1660;
+  opacity:.9;
+  }
 </style>
   
 </head>
