@@ -523,6 +523,37 @@ th{color:var(--muted);font-size:10px}
   color:#e5f1ec;
   margin-top:15px;
 }
+  
+/* Présentation professionnelle des widgets financiers */
+.tradingview-widget-container {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  border-radius: 14px;
+  background: #ffffff;
+  margin-top: 14px;
+}
+
+.tradingview-widget-container iframe {
+  max-width: 100%;
+}
+
+.tradingview-widget-copyright {
+  padding: 8px 4px;
+  font-size: 10px;
+  color: #718078;
+  text-align: center;
+}
+
+.card:has(.tradingview-widget-container) {
+  border-top: 3px solid #0b7657;
+}
+
+.card .section-title {
+  color: #073b32;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+}
 </style>
   
 </head>
