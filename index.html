@@ -2456,7 +2456,8 @@ async function loadAdminNotificationHistory() {
       <div class="notification-empty" style="text-align:left;margin-bottom:12px;">
         <strong>${escapeHTML(item.title)}</strong>
         <p>${escapeHTML(item.message)}</p>
-        <small>Destinataire : ${escapeHTML(clientName)}</small><br>
+        <small>Envoi : ${item.recipient_mode === "all" ? "Tous les clients" : "Client individuel"}</small><br>
+<small>Destinataire : ${escapeHTML(clientName)}</small><br>
         <small>${new Date(item.created_at).toLocaleString("fr-FR")}</small>
       </div>
     `;
