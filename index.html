@@ -1379,7 +1379,7 @@ async function loadTransactions() {
     amount.textContent = sign + formatMoney(transaction.amount);
 
     item.append(details, amount);
-    home.appendChild(item);
+    if (home) home.appendChild(item);
 
     const row = document.createElement("tr");
     row.innerHTML =
