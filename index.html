@@ -930,22 +930,39 @@ th{color:var(--muted);font-size:10px}
 
   <!-- VIREMENT -->
   <section id="transferSection" class="section">
-    <div class="card">
-      <h2>Virement 🪙</h2>
-      <p class="muted">Transfert d'argent.</p>
-      <label>E-mail du destinataire</label>
-      <input type="email" id="transferEmail" placeholder="destinataire@email.com">
-      <label>Montant en euros</label>
-      <input type="number" id="transferAmount" min="0.01" step="0.01" placeholder="0,00">
-      <button id="transferBtn" class="btn btn-full">
-  <svg viewBox="0 0 24 24"><path d="M4 12h15M13 5l7 7-7 7"/></svg>
-  Effectuer le transfert
-      </button>
-      <div id="transferStatus" class="status"></div>
-    </div>
-  </section>
+    <!-- VIREMENT -->
+<section id="transferSection" class="section">
+  <div class="card">
+    <h2>Virement</h2>
+    <p class="muted">Informations du bénéficiaire</p>
 
-  <!-- DÉPÔT -->
+    <label>Nom du bénéficiaire</label>
+    <input type="text" id="beneficiaryLastName" placeholder="Nom">
+
+    <label>Prénom du bénéficiaire</label>
+    <input type="text" id="beneficiaryFirstName" placeholder="Prénom">
+
+    <label>IBAN du bénéficiaire</label>
+    <input type="text" id="beneficiaryIban" placeholder="IBAN">
+
+    <label>Banque du bénéficiaire</label>
+    <input type="text" id="beneficiaryBank" placeholder="Nom de la banque">
+
+    <label>Montant en euros</label>
+    <input type="number" id="transferAmount" min="0.01" step="0.01" placeholder="0,00">
+
+    <label>Motif du virement</label>
+    <input type="text" id="transferReason" placeholder="Motif du paiement">
+
+    <p class="muted">Simulation uniquement : aucun argent réel ne sera envoyé.</p>
+
+    <button id="transferBtn" class="btn btn-full" disabled>
+      Effectuer le virement
+    </button>
+
+    <div id="transferStatus" class="status"></div>
+  </div>
+</section>
   <section id="depositSection" class="section">
     <div class="card">
       <h2>Demande de crédit</h2>
