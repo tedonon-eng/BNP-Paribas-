@@ -2750,7 +2750,7 @@ async function adminCredit() {
   $("adminAmount").value = "";
   showStatus("adminStatus", "Crédit virtuel effectué.");
   await loadRequests();
-  toast("Compte virtuel crédité.");
+  toast("🔔 Notification : crédit virtuel de " + formatMoney(amount) + " effectué.");
 }
 
 /* PARAMÈTRES */
