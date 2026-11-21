@@ -669,6 +669,43 @@ th{color:var(--muted);font-size:10px}
   #logoutBtn {
   display: none !important;
   }
+  /* GRAND LOGO BNP EN RELIEF MÉTALLIQUE */
+.topbar::after {
+  content: "BNP";
+  position: absolute;
+  top: 24px;
+  left: 0;
+  width: 100%;
+  height: auto;
+  text-align: center;
+  font-size: clamp(90px, 25vw, 145px);
+  line-height: 1;
+  font-weight: 950;
+  letter-spacing: 12px;
+  color: #e7c77e;
+  background: linear-gradient(
+    150deg,
+    #fff8d9 5%,
+    #f4d88f 25%,
+    #bd9140 48%,
+    #fff0bd 65%,
+    #98702d 90%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow:
+    2px 3px 0 #8e6b31,
+    4px 6px 0 #59431f,
+    0 12px 25px #00150f99;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  transform: perspective(600px) rotateX(12deg);
+  opacity: .55;
+  pointer-events: none;
+  z-index: 0;
+}
 </style>
 
   
