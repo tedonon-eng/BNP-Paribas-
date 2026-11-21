@@ -2423,6 +2423,45 @@ async function loadNotifications() {
     });
   });
 }
+  /* HISTORIQUE DES NOTIFICATIONS ADMIN */
+async function loadAdminNotificationHistory() {
+  if (currentProfile?.role !== "admin" || !currentUser) return;
+
+  const history = $("adminNotificationHistory");
+  history.innerHTML = "<p>Chargement de l'historique...</p>";
+
+  const { data, error } = await db
+    .from("notifications")
+    .select("*")
+    .eq("sender_id", currentUser.id)
+    .order("created_at", { ascending: false });
+
+  if (error) {
+    history.textContent = "Impossible de charger l'historique.";
+    return;
+  }
+
+  if (!data || !data.length) {
+    history.innerHTML = "<p>Aucune notification envoyée.</p>";
+    return;
+  }
+
+  history.innerHTML = data.map(item => {
+    const client = adminClients.find(c => c.user_id === item.recipient_id);
+    const clientName = client
+      ? [client.first_name, client.last_name].filter(Boolean).join(" ")
+      : "Client";
+
+    return `
+      <div class="notification-empty" style="text-align:left;margin-bottom:12px;">
+        <strong>${escapeHTML(item.title)}</strong>
+        <p>${escapeHTML(item.message)}</p>
+        <small>Destinataire : ${escapeHTML(clientName)}</small><br>
+        <small>${new Date(item.created_at).toLocaleString("fr-FR")}</small>
+      </div>
+    `;
+  }).join("");
+}
 /* IDENTIFIANTS FICTIFS */
 function accountReference(userId) {
   return "BNP Paribas-" + userId.replace(/-/g,"").slice(0,10).toUpperCase();
