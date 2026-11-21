@@ -2372,7 +2372,10 @@ async function loadNotifications() {
   $("notificationTotal").textContent = notifications.length;
   $("notificationUnread").textContent = unread;
   $("notificationRead").textContent = read;
+  const navBadge = $("notificationNavBadge");
 
+  navBadge.textContent = unread;
+  navBadge.classList.toggle("hidden", unread === 0);
   if (!notifications.length) {
     list.innerHTML = `
       <div class="notification-empty">
