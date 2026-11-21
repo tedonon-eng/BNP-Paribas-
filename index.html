@@ -3411,6 +3411,7 @@ $("changePasswordBtn").addEventListener("click", async function() {
   $("adminNotificationTitle").value = "";
   $("adminNotificationMessage").value = "";
   showStatus("adminNotificationStatus", "Notification envoyée avec succès.");
+      await loadAdminNotificationHistory();
 });
     loadSettings();
 
