@@ -708,10 +708,19 @@ th{color:var(--muted);font-size:10px}
       <div class="section-title">Accès rapides</div>
       <div class="quick-grid">
         <button class="quick" onclick="showSection('transferSection')"><span>↗</span>Virement</button>
-        <button class="quick" onclick="showSection('depositSection')"><span>＋</span>Dépôt</button>
-        <button class="quick" onclick="showSection('withdrawSection')"><span>↓</span>Retrait</button>
-        <button class="quick" onclick="showSection('historySection')"><span>↻</span>Historique</button>
-      </div>
+        <button class="quick" onclick="showSection('transferSection')">
+  <span><svg viewBox="0 0 24 24"><path d="M4 12h15M13 5l7 7-7 7"/></svg></span>Virement
+</button>
+<button class="quick" onclick="showSection('depositSection')">
+  <span><svg viewBox="0 0 24 24"><path d="M12 3v18M3 12h18"/></svg></span>Dépôt
+</button>
+<button class="quick" onclick="showSection('withdrawSection')">
+  <span><svg viewBox="0 0 24 24"><path d="M12 3v18M5 14l7 7 7-7"/></svg></span>Retrait
+</button>
+<button class="quick" onclick="showSection('historySection')">
+  <span><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5M12 7v5l4 2"/></svg></span>Historique
+</button>
+        
     </div>
 
 <div class="card">
