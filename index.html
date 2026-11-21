@@ -2164,6 +2164,41 @@ isolation: isolate;
   
   <!-- ADMINISTRATION -->
   <section id="adminSection" class="section">
+    
+<!-- ENVOI DES NOTIFICATIONS ADMIN -->
+<div class="card" id="adminNotificationsCard">
+  <h2>🔔 Envoyer une notification</h2>
+  <p class="muted">Envoyer un message aux comptes clients de démonstration.</p>
+
+  <label>Titre de la notification</label>
+  <input type="text" id="adminNotificationTitle"
+         placeholder="Exemple : Information importante">
+
+  <label>Message</label>
+  <textarea id="adminNotificationMessage"
+            rows="5"
+            placeholder="Écrivez votre message ici..."></textarea>
+
+  <label>Destinataires</label>
+  <select id="adminNotificationRecipient">
+    <option value="all">Tous les clients</option>
+    <option value="specific">Un client précis</option>
+  </select>
+
+  <div id="adminNotificationClientArea" class="hidden">
+    <label>Choisir le client</label>
+    <select id="adminNotificationClient">
+      <option value="">Sélectionner un client</option>
+    </select>
+  </div>
+
+  <button id="sendAdminNotificationBtn" class="btn btn-full">
+    📩 Envoyer la notification
+  </button>
+
+  <div id="adminNotificationStatus" class="status"></div>
+</div>
+    
     <div class="card">
       <h2>Administration</h2>
       <p class="muted">Outils réservés au compte administrateur de la démonstration.</p>
