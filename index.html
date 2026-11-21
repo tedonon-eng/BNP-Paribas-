@@ -1108,6 +1108,101 @@ th{color:var(--muted);font-size:10px}
 
   </section>
 
+  
+<!-- NOUVELLE PAGE PORTEFEUILLE -->
+<section id="walletSection" class="section wallet-page">
+
+  <div class="wallet-top">
+    <div class="wallet-brand">Mon portefeuille</div>
+    <div class="wallet-tools">
+      <button class="wallet-tool" type="button" aria-label="Notifications">♧</button>
+      <button class="wallet-tool" type="button" aria-label="Profil" onclick="showSection('profileSection')">☺</button>
+    </div>
+  </div>
+
+  <div class="wallet-balance-card">
+    <div class="wallet-balance-label">Solde total disponible</div>
+    <div class="wallet-balance-value" id="walletBalance">0,00 €</div>
+    <div class="wallet-change">Compte virtuel · Démonstration</div>
+
+    <svg class="wallet-chart" viewBox="0 0 320 75" preserveAspectRatio="none">
+      <path d="M0 58 C25 52 32 63 55 43 S90 48 112 30 S145 42 170 24 S205 35 230 18 S275 30 320 5"
+        fill="none" stroke="#2457e8" stroke-width="3"
+        stroke-linecap="round"/>
+      <path d="M0 58 C25 52 32 63 55 43 S90 48 112 30 S145 42 170 24 S205 35 230 18 S275 30 320 5 L320 75 L0 75Z"
+        fill="#2457e8" opacity=".07"/>
+    </svg>
+
+    <div class="wallet-actions">
+      <button class="wallet-action" onclick="showSection('depositSection')">
+        <span class="wallet-action-icon">＋</span>
+        Dépôt
+      </button>
+      <button class="wallet-action" onclick="showSection('transferSection')">
+        <span class="wallet-action-icon">↗</span>
+        Virement
+      </button>
+      <button class="wallet-action" onclick="showSection('historySection')">
+        <span class="wallet-action-icon">▤</span>
+        Activité
+      </button>
+      <button class="wallet-action" onclick="showSection('profileSection')">
+        <span class="wallet-action-icon">▣</span>
+        Carte
+      </button>
+    </div>
+  </div>
+
+  <div class="wallet-panel">
+    <div class="wallet-panel-heading">
+      <h3>Mes comptes</h3>
+      <span class="wallet-link">Devises</span>
+    </div>
+
+    <div class="wallet-currencies">
+      <div class="wallet-currency">
+        <div class="wallet-currency-top">
+          <span class="wallet-flag">🇪🇺</span> EUR
+        </div>
+        <small id="walletEuro">0,00 €</small>
+      </div>
+
+      <div class="wallet-currency">
+        <div class="wallet-currency-top">
+          <span class="wallet-flag">🇺🇸</span> USD
+        </div>
+        <small>Non activé</small>
+      </div>
+
+      <div class="wallet-currency">
+        <div class="wallet-currency-top">
+          <span class="wallet-flag">🇬🇧</span> GBP
+        </div>
+        <small>Non activé</small>
+      </div>
+    </div>
+
+    <p class="wallet-demo-note">
+      Portefeuille de démonstration. Les devises USD et GBP ne sont pas des comptes actifs.
+    </p>
+  </div>
+
+  <div class="wallet-panel">
+    <div class="wallet-panel-heading">
+      <h3>Dernières opérations</h3>
+      <button class="wallet-link" onclick="showSection('historySection')">
+        Tout voir
+      </button>
+    </div>
+
+    <div id="walletTransactions">
+      <p class="wallet-demo-note">Les opérations apparaîtront ici après leur chargement.</p>
+    </div>
+  </div>
+
+</section>
+<!-- FIN PAGE PORTEFEUILLE -->
+  
   <!-- PROFIL -->
   <section id="profileSection" class="section">
     <div class="card">
