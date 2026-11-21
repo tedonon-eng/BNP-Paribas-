@@ -2395,6 +2395,9 @@ function showSection(id) {
 
   const target = $(id);
   if (target) target.classList.add("active");
+    if (id === "notificationsSection") {
+    loadNotifications();
+    }
 const pageHeader = document.querySelector(".topbar");
 if (pageHeader) {
   pageHeader.classList.toggle("hidden", id !== "homeSection");
