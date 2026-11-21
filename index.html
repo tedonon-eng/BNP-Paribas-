@@ -2145,11 +2145,16 @@ async function loadProfilePhoto() {
 
   if (error || !data) return;
 
-  const avatar = $("profileAvatar");
-  avatar.textContent = "";
-  avatar.style.backgroundImage = `url(${data.signedUrl})`;
-  avatar.style.backgroundSize = "cover";
-  avatar.style.backgroundPosition = "center";
+    const avatar = $("profileAvatar");
+  const homeAvatar = $("homeAvatar");
+
+  [avatar, homeAvatar].forEach(element => {
+    element.textContent = "";
+    element.style.backgroundImage = `url(${data.signedUrl})`;
+    element.style.backgroundSize = "cover";
+    element.style.backgroundPosition = "center";
+    element.style.backgroundRepeat = "no-repeat";
+  });
     }
 function updateProfileDisplay() {
   const names = getUserNames();
