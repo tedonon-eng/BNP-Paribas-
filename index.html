@@ -1508,7 +1508,10 @@ function showSection(id) {
 
   const target = $(id);
   if (target) target.classList.add("active");
-
+const pageHeader = document.querySelector(".topbar");
+if (pageHeader) {
+  pageHeader.classList.toggle("hidden", id !== "homeSection");
+}
   document.querySelectorAll(".bottom-nav button").forEach(button => {
     button.classList.toggle("active", button.dataset.section === id);
   });
