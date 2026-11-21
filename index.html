@@ -2719,7 +2719,7 @@ async function createRequest(type) {
     "Demande envoyée à l'administrateur de la démonstration."
   );
 
-  toast("Demande enregistrée.");
+  toast("🔔 Notification : demande de " + (isDeposit ? "dépôt" : "retrait") + " de " + formatMoney(amount) + " envoyée.");
 }
 
 /* CRÉDIT ADMINISTRATEUR */
