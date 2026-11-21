@@ -2136,7 +2136,21 @@ function getUserNames() {
     lastName: metadata.last_name || ""
   };
 }
+async function loadProfilePhoto() {
+  const path = currentUser.id + "/avatar";
 
+  const { data, error } = await db.storage
+    .from("profile-photos")
+    .createSignedUrl(path, 604800);
+
+  if (error || !data) return;
+
+  const avatar = $("profileAvatar");
+  avatar.textContent = "";
+  avatar.style.backgroundImage = `url(${data.signedUrl})`;
+  avatar.style.backgroundSize = "cover";
+  avatar.style.backgroundPosition = "center";
+    }
 function updateProfileDisplay() {
   const names = getUserNames();
   const first = names.firstName.trim();
