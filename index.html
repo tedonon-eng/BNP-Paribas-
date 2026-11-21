@@ -2138,6 +2138,24 @@ function getUserNames() {
 }
 async function loadProfilePhoto() {
   const path = currentUser.id + "/avatar";
+  const cacheKey = "profilePhotoUrl_" + currentUser.id;
+
+  function displayPhoto(url) {
+    ["profileAvatar", "homeAvatar"].forEach(id => {
+      const avatar = $(id);
+      avatar.textContent = "";
+      avatar.style.backgroundImage = `url(${url})`;
+      avatar.style.backgroundSize = "cover";
+      avatar.style.backgroundPosition = "center";
+      avatar.style.backgroundRepeat = "no-repeat";
+    });
+  }
+
+  const cachedUrl = localStorage.getItem(cacheKey);
+
+  if (cachedUrl) {
+    displayPhoto(cachedUrl);
+  }
 
   const { data, error } = await db.storage
     .from("profile-photos")
@@ -2145,17 +2163,9 @@ async function loadProfilePhoto() {
 
   if (error || !data) return;
 
-    const avatar = $("profileAvatar");
-  const homeAvatar = $("homeAvatar");
-
-  [avatar, homeAvatar].forEach(element => {
-    element.textContent = "";
-    element.style.backgroundImage = `url(${data.signedUrl})`;
-    element.style.backgroundSize = "cover";
-    element.style.backgroundPosition = "center";
-    element.style.backgroundRepeat = "no-repeat";
-  });
-    }
+  localStorage.setItem(cacheKey, data.signedUrl);
+  displayPhoto(data.signedUrl);
+}
 function updateProfileDisplay() {
   const names = getUserNames();
   const first = names.firstName.trim();
