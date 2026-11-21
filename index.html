@@ -2212,6 +2212,7 @@ const walletEuro = document.getElementById("walletEuro");
 if (walletBalance) walletBalance.textContent = formatMoney(wallet.balance);
 if (walletEuro) walletEuro.textContent = formatMoney(wallet.balance);
   updateProfileDisplay();
+  await loadProfilePhoto();
   $("adminNav").classList.toggle("hidden", profile.role !== "admin");
 
   showLoggedInScreen();
