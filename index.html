@@ -1407,7 +1407,7 @@ async function loadRequests() {
   if (error) throw error;
 
   const list = $("requestsList");
-  list.innerHTML = "";
+  if (list) list.innerHTML = "";
 
   if (!data || !data.length) {
     list.textContent = "Aucune demande pour le moment.";
