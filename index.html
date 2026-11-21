@@ -649,6 +649,7 @@ th{color:var(--muted);font-size:10px}
   opacity: .28;
   transform: rotateY(-22deg) rotateX(8deg);
   filter: drop-shadow(12px 16px 8px #00130f99);
+    animation: bankFloat 5s ease-in-out infinite;
   pointer-events: none;
   z-index: 1;
 }
@@ -714,6 +715,14 @@ th{color:var(--muted);font-size:10px}
   }
   50% {
     background-position: 100% 50%;
+  }
+  }
+  @keyframes bankFloat {
+  0%, 100% {
+    transform: translateY(0) rotateY(-22deg) rotateX(8deg);
+  }
+  50% {
+    transform: translateY(-7px) rotateY(-18deg) rotateX(8deg);
   }
   }
 </style>
