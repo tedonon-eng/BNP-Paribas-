@@ -2678,7 +2678,7 @@ async function transferMoney() {
   $("transferAmount").value = "";
   showStatus("transferStatus", "Transfert virtuel effectué.");
   await loadAccount();
-  toast("Transfert virtuel terminé.");
+  toast("🔔 Notification : transfert virtuel de " + formatMoney(amount) + " effectué avec succès.");
 }
 
 /* DEMANDES DE CRÉDIT ET RETRAIT VIRTUELS */
