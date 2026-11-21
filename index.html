@@ -1680,12 +1680,12 @@ th{color:var(--muted);font-size:10px}
     <div class="card">
       <div class="profile-head">
         <div class="profile-avatar" id="profileAvatar">U</div>
-        <input type="file" id="profilePhotoInput" accept="image/*">
-        <div>
-          <h2 id="profileFullName">Mon profil</h2>
-          <p id="profileEmail">Adresse e-mail</p>
-          <span class="pill">Profil </span>
-        </div>
+<div class="profile-info">
+  <h2 id="profileFullName">Mon profil</h2>
+  <p id="profileEmail">Adresse e-mail</p>
+  <input type="file" id="profilePhotoInput" accept="image/*" hidden>
+  <label for="profilePhotoInput" class="change-photo-btn">Changer la photo</label>
+</div>
       </div>
 
       <h3>Informations personnelles</h3>
