@@ -2190,6 +2190,36 @@ const debitsCount = document.getElementById("historyDebitsCount");
 if (operationsCount) operationsCount.textContent = (data || []).length;
 if (creditsCount) creditsCount.textContent = (data || []).filter(t => t.receiver_id === currentUser.id).length;
 if (debitsCount) debitsCount.textContent = (data || []).filter(t => t.sender_id === currentUser.id).length;
+  const chartLine = document.getElementById("homeBalanceLine");
+
+if (chartLine && currentWallet) {
+  const transactions = data || [];
+  let balance = Number(currentWallet.balance) || 0;
+
+  transactions.forEach(t => {
+    const amount = Number(t.amount) || 0;
+    balance += t.receiver_id === currentUser.id ? -amount : amount;
+  });
+
+  const values = [balance];
+
+  [...transactions].reverse().forEach(t => {
+    const amount = Number(t.amount) || 0;
+    balance += t.receiver_id === currentUser.id ? amount : -amount;
+    values.push(balance);
+  });
+
+  const points = values.slice(-7);
+  const min = Math.min(...points);
+  const max = Math.max(...points);
+  const range = max - min || 1;
+
+  chartLine.setAttribute("points", points.map((v, i) => {
+    const x = 10 + i * (300 / Math.max(points.length - 1, 1));
+    const y = 125 - ((v - min) / range) * 95;
+    return `${x},${y}`;
+  }).join(" "));
+}
   if (home) home.innerHTML = "";
 const walletList = document.getElementById("walletTransactions");
 if (walletList) walletList.innerHTML = "";
