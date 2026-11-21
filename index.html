@@ -2045,11 +2045,13 @@ if (walletList && walletList.children.length < 4) {
 }
     const row = document.createElement("tr");
     row.innerHTML =
-      "<td>" + escapeHTML(title) + "</td>" +
-      "<td>" + escapeHTML(date) + "</td>" +
-      '<td class="' + amountClass + '">' +
-      escapeHTML(sign + formatMoney(transaction.amount)) +
-      "</td>";
+  '<td><span class="history-operation-icon ' + amountClass + '">' +
+  (isCredit ? "↓" : "↑") +
+  '</span> ' + escapeHTML(title) + "</td>" +
+  "<td>" + escapeHTML(date) + "</td>" +
+  '<td class="' + amountClass + '">' +
+  escapeHTML(sign + formatMoney(transaction.amount)) +
+  "</td>";
 
     table.appendChild(row);
   });
