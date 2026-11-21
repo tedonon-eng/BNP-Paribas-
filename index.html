@@ -3218,6 +3218,12 @@ $("changePasswordBtn").addEventListener("click", async function() {
     $("adminCreditBtn").addEventListener("click", adminCredit);
     $("adminClientSelect").addEventListener("change", loadSelectedAdminClient);
     $("saveVirtualIdentifiersBtn").addEventListener("click", saveVirtualIdentifiers);
+    $("adminNotificationRecipient").addEventListener("change", () => {
+  $("adminNotificationClientArea").classList.toggle(
+    "hidden",
+    $("adminNotificationRecipient").value !== "specific"
+  );
+});
     loadSettings();
 
     const {data, error} = await db.auth.getSession();
