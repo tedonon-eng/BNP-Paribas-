@@ -1674,7 +1674,8 @@ async function loadTransactions() {
   const home = $("homeTransactions");
   const table = $("transactionsTable");
   if (home) home.innerHTML = "";
-
+const walletList = document.getElementById("walletTransactions");
+if (walletList) walletList.innerHTML = "";
   if (!data || !data.length) {
     home.textContent = "Aucune opération pour le moment.";
     if (home) home.textContent = "Aucune opération pour le moment.";
