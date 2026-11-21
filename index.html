@@ -739,6 +739,35 @@ isolation: isolate;
     opacity: .42;
   }
   }
+  .topbar .header-decoration {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.topbar .header-glow {
+  position: absolute;
+  top: 0;
+  left: -45%;
+  width: 35%;
+  height: 100%;
+  background: linear-gradient(
+    110deg,
+    transparent,
+    #ffffff18,
+    #f4d88f35,
+    transparent
+  );
+  transform: skewX(-20deg);
+  animation: headerShine 8s ease-in-out infinite;
+}
+
+@keyframes headerShine {
+  0%, 100% { left: -45%; }
+  50% { left: 110%; }
+}
 </style>
 
   
