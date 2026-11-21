@@ -1266,7 +1266,7 @@ function updateProfileDisplay() {
 
   const reference = accountReference(currentUser.id);
   $("homeAccountId").textContent = reference;
-  $("profileAccountId").textContent = reference;
+  $("profileAccountId").textContent = currentProfile?.virtual_bic || "BIC DE DÉMONSTRATION";
   $("virtualIban").textContent = currentProfile?.virtual_iban || demoIban(currentUser.id);
 $("demoTaxCode").textContent = currentProfile?.virtual_tax_code || demoTaxCode(currentUser.id);
 }
