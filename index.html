@@ -1512,6 +1512,10 @@ const pageHeader = document.querySelector(".topbar");
 if (pageHeader) {
   pageHeader.classList.toggle("hidden", id !== "homeSection");
 }
+  const pageNote = document.querySelector(".virtual-note");
+if (pageNote) {
+  pageNote.classList.toggle("hidden", id !== "homeSection");
+}
   document.querySelectorAll(".bottom-nav button").forEach(button => {
     button.classList.toggle("active", button.dataset.section === id);
   });
