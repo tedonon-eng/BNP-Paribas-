@@ -3398,7 +3398,8 @@ $("changePasswordBtn").addEventListener("click", async function() {
     sender_id: currentUser.id,
     recipient_id: recipientId,
     title,
-    message
+    message,
+recipient_mode: recipientMode
   }));
 
   const { error } = await db.from("notifications").insert(rows);
