@@ -1708,7 +1708,32 @@ if (walletList) walletList.innerHTML = "";
 
     item.append(details, amount);
     if (home) home.appendChild(item);
+if (walletList && walletList.children.length < 4) {
+  const walletItem = document.createElement("div");
+  walletItem.className = "wallet-activity";
 
+  const walletIcon = document.createElement("div");
+  walletIcon.className = "wallet-activity-icon";
+  walletIcon.textContent = isCredit ? "↓" : "↑";
+
+  const walletInfo = document.createElement("div");
+  walletInfo.className = "wallet-activity-info";
+
+  const walletTitle = document.createElement("strong");
+  walletTitle.textContent = title;
+
+  const walletDate = document.createElement("small");
+  walletDate.textContent = date;
+
+  walletInfo.append(walletTitle, walletDate);
+
+  const walletAmount = document.createElement("div");
+  walletAmount.className = "wallet-activity-amount " + amountClass;
+  walletAmount.textContent = sign + formatMoney(transaction.amount);
+
+  walletItem.append(walletIcon, walletInfo, walletAmount);
+  walletList.appendChild(walletItem);
+}
     const row = document.createElement("tr");
     row.innerHTML =
       "<td>" + escapeHTML(title) + "</td>" +
