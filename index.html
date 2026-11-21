@@ -1493,7 +1493,8 @@ function loadSelectedAdminClient() {
   );
 
   $("adminVirtualIban").value = client?.virtual_iban || "";
-  $("adminVirtualTaxCode").value = client?.virtual_tax_code || "";
+$("adminVirtualBic").value = client?.virtual_bic || "";
+$("adminVirtualTaxCode").value = client?.virtual_tax_code || "";
 
   showStatus(
     "identifierAdminStatus",
