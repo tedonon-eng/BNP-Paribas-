@@ -2930,6 +2930,7 @@ $("changePasswordBtn").addEventListener("click", async function() {
 
     if (data.session) {
       currentUser = data.session.user;
+      resetInactivityTimer();
 
       try {
         await loadAccount();
