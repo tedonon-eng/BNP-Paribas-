@@ -1386,7 +1386,23 @@ th{color:var(--muted);font-size:10px}
       <div class="balance-amount" id="balance">0,00 €</div>
       <div class="balance-foot">Portefeuille </div>
     </div>
-
+<div class="card balance-chart-card">
+  <div class="section-title">Évolution du solde</div>
+  <p class="muted">Suivi de vos opérations virtuelles</p>
+  <div class="balance-chart">
+    <svg viewBox="0 0 320 150" preserveAspectRatio="none">
+      <line x1="10" y1="30" x2="310" y2="30" stroke="#e8edf5"/>
+      <line x1="10" y1="75" x2="310" y2="75" stroke="#e8edf5"/>
+      <line x1="10" y1="120" x2="310" y2="120" stroke="#e8edf5"/>
+      <polyline id="homeBalanceLine"
+        points="10,110 70,90 130,100 190,60 250,70 310,30"
+        fill="none" stroke="#0878e8"
+        stroke-width="3" stroke-linecap="round"
+        stroke-linejoin="round"/>
+    </svg>
+  </div>
+  <p class="chart-caption">Aperçu indicatif du solde</p>
+</div>
     <div class="card welcome">
       <div>
         <h2 id="welcomeName">Bonjour 👋</h2>
