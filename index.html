@@ -2378,6 +2378,22 @@ async function loadNotifications() {
         </button>` : ""}
     </div>
   `).join("");
+  list.querySelectorAll(".mark-notification-read").forEach(button => {
+    button.addEventListener("click", async () => {
+      const { error } = await db
+        .from("notifications")
+        .update({ read_at: new Date().toISOString() })
+        .eq("id", button.dataset.id)
+        .eq("recipient_id", currentUser.id);
+
+      if (error) {
+        toast("Impossible de marquer comme lue.");
+        return;
+      }
+
+      loadNotifications();
+    });
+  });
 }
 /* IDENTIFIANTS FICTIFS */
 function accountReference(userId) {
