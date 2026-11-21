@@ -381,17 +381,44 @@ th{color:var(--muted);font-size:10px}
   .top-quick-actions{
   display:flex;
   justify-content:flex-end;
-  gap:10px;
-  padding:12px 15px;
+  align-items:center;
+  gap:14px;
+  padding:14px 18px;
 }
-.top-quick-actions button{
-  border:1px solid #dce9e2;
-  background:#ffffff;
+
+.quick-icon-btn{
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:48px;
+  height:48px;
+  border:1px solid #e1ebe5;
+  border-radius:50%;
+  background:linear-gradient(145deg,#ffffff,#edf5f0);
   color:#075b43;
-  border-radius:12px;
-  padding:10px 12px;
-  font-size:12px;
-  font-weight:700;
+  box-shadow:0 4px 12px rgba(0,70,45,0.13);
+  cursor:pointer;
+}
+
+.quick-icon-btn svg{
+  width:23px;
+  height:23px;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:1.8;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+
+.quick-icon-btn .notification-nav-badge{
+  position:absolute;
+  top:-5px;
+  right:-5px;
+  margin:0;
+  min-width:19px;
+  height:19px;
+  border:2px solid white;
 }
 #toast{
   position:fixed;
