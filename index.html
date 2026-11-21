@@ -2801,6 +2801,22 @@ async function loadAdminClients() {
     select.appendChild(option);
   });
 
+  const notificationSelect = $("adminNotificationClient");
+
+  notificationSelect.innerHTML =
+    '<option value="">Sélectionner un client</option>';
+
+  adminClients.forEach(client => {
+    const option = document.createElement("option");
+    option.value = client.user_id;
+    option.textContent =
+      [client.first_name, client.last_name].filter(Boolean).join(" ") ||
+      client.email ||
+      client.user_id;
+
+    notificationSelect.appendChild(option);
+  });
+  
   if (!adminClients.length) {
     select.innerHTML = '<option value="">Aucun client trouvé</option>';
   }
