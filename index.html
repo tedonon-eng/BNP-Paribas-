@@ -2328,7 +2328,52 @@ function escapeHTML(value) {
     "'":"&#39;"
   })[char]);
 }
+/* CHARGEMENT DES NOTIFICATIONS CLIENT */
+async function loadNotifications() {
+  if (!currentUser) return;
 
+  const list = $("notificationsList");
+
+  list.innerHTML = "<p>Chargement des notifications...</p>";
+
+  const { data, error } = await db
+    .from("notifications")
+    .select("*")
+    .eq("recipient_id", currentUser.id)
+    .order("created_at", { ascending: false });
+
+  if (error) {
+    list.textContent = "Impossible de charger les notifications.";
+    return;
+  }
+
+  const notifications = data || [];
+  const unread = notifications.filter(item => !item.read_at).length;
+  const read = notifications.length - unread;
+
+  $("notificationTotal").textContent = notifications.length;
+  $("notificationUnread").textContent = unread;
+  $("notificationRead").textContent = read;
+
+  if (!notifications.length) {
+    list.innerHTML = `
+      <div class="notification-empty">
+        <span>🔔</span>
+        <h3>Aucune notification</h3>
+        <p>Les messages de l'administrateur apparaîtront ici.</p>
+      </div>`;
+    return;
+  }
+
+  list.innerHTML = notifications.map(item => `
+    <div class="notification-empty" style="text-align:left;margin-bottom:12px;">
+      <strong>${escapeHTML(item.title)}</strong>
+      <p>${escapeHTML(item.message)}</p>
+      <small>${new Date(item.created_at).toLocaleString("fr-FR")}</small>
+      <p>${item.read_at ? "✓ Lue" : "● Non lue"}</p>
+    </div>
+  `).join("");
+}
 /* IDENTIFIANTS FICTIFS */
 function accountReference(userId) {
   return "BNP Paribas-" + userId.replace(/-/g,"").slice(0,10).toUpperCase();
