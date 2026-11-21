@@ -2741,6 +2741,24 @@ async function initializeApp() {
     $("settingsLogoutBtn").addEventListener("click", signOut);
 
     $("saveProfileBtn").addEventListener("click", saveProfile);
+    $("profilePhotoInput").addEventListener("change", function() {
+  const file = this.files[0];
+  if (!file || !file.type.startsWith("image/")) return;
+
+  const reader = new FileReader();
+
+  reader.onload = function(e) {
+    const avatar = $("profileAvatar");
+    avatar.textContent = "";
+    avatar.style.backgroundImage = `url(${e.target.result})`;
+    avatar.style.backgroundSize = "cover";
+    avatar.style.backgroundPosition = "center";
+
+    localStorage.setItem("profilePhoto_" + currentUser.id, e.target.result);
+  };
+
+  reader.readAsDataURL(file);
+});
     $("saveSettingsBtn").addEventListener("click", saveSettings);
 
     $("transferBtn").addEventListener("click", transferMoney);
