@@ -1350,7 +1350,7 @@ async function loadTransactions() {
 
   if (!data || !data.length) {
     home.textContent = "Aucune opération pour le moment.";
-    table.innerHTML = '<tr><td colspan="3">Aucune opération disponible.</td></tr>';
+    if (home) home.textContent = "Aucune opération pour le moment.";
     return;
   }
 
