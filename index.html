@@ -1209,6 +1209,42 @@ th{color:var(--muted);font-size:10px}
   font-weight: 850;
   color: white;
 }
+  /* CARTES INDIVIDUELLES DES OPERATIONS */
+#historySection table {
+  border-collapse: separate;
+  border-spacing: 0 12px;
+}
+
+#historySection tbody tr {
+  background: #ffffff;
+  box-shadow: 0 4px 14px rgba(20, 30, 50, 0.06);
+}
+
+#historySection tbody td {
+  padding: 20px 12px;
+  border-top: 1px solid #f0f1f4;
+  border-bottom: 1px solid #f0f1f4;
+  vertical-align: middle;
+}
+
+#historySection tbody td:first-child {
+  border-left: 1px solid #f0f1f4;
+  border-radius: 16px 0 0 16px;
+}
+
+#historySection tbody td:last-child {
+  border-right: 1px solid #f0f1f4;
+  border-radius: 0 16px 16px 0;
+  font-size: 15px;
+  font-weight: 850;
+  white-space: nowrap;
+}
+
+#historySection .history-operation-icon {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  }
     </style>
   
 </head>
