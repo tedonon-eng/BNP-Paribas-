@@ -2602,7 +2602,7 @@ if (walletEuro) walletEuro.textContent = formatMoney(wallet.balance);
 
   showLoggedInScreen();
   await loadTransactions();
-
+await loadNotifications();
   if (profile.role === "admin") {
   await loadRequests();
   await loadAdminClients();
