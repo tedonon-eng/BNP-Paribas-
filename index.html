@@ -1346,7 +1346,7 @@ async function loadTransactions() {
   const home = $("homeTransactions");
   const table = $("transactionsTable");
   home.innerHTML = "";
-  table.innerHTML = "";
+  if (home) home.innerHTML = "";
 
   if (!data || !data.length) {
     home.textContent = "Aucune opération pour le moment.";
