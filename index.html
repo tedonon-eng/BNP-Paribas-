@@ -2610,6 +2610,7 @@ async function signIn() {
   }
 
   currentUser = data.user;
+  resetInactivityTimer();
 
   try {
     await loadAccount();
