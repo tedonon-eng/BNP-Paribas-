@@ -1245,6 +1245,36 @@ th{color:var(--muted);font-size:10px}
   height: 36px;
   flex-shrink: 0;
   }
+  /* COMPTEURS DE L'HISTORIQUE */
+#historySection .history-counts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 18px 0 24px;
+}
+
+#historySection .history-counts div {
+  background: #f5f8fb;
+  border: 1px solid #e9eef3;
+  border-radius: 16px;
+  padding: 16px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: center;
+}
+
+#historySection .history-counts strong {
+  font-size: 25px;
+  font-weight: 850;
+  color: #17212b;
+}
+
+#historySection .history-counts span {
+  font-size: 12px;
+  font-weight: 700;
+  color: #697586;
+}
     </style>
   
 </head>
