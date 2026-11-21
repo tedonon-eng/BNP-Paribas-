@@ -2817,6 +2817,7 @@ function loadSettings() {
 
 /* DÉCONNEXION */
 async function signOut() {
+  clearTimeout(inactivityTimer);
   const {error} = await db.auth.signOut();
 
   if (error) {
