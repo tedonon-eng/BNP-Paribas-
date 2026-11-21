@@ -2830,23 +2830,26 @@ async function initializeApp() {
     $("settingsLogoutBtn").addEventListener("click", signOut);
 
     $("saveProfileBtn").addEventListener("click", saveProfile);
-    $("profilePhotoInput").addEventListener("change", function() {
+    $("profilePhotoInput").addEventListener("change", async function() {
   const file = this.files[0];
   if (!file || !file.type.startsWith("image/")) return;
 
-  const reader = new FileReader();
+  const path = currentUser.id + "/avatar";
 
-  reader.onload = function(e) {
-    const avatar = $("profileAvatar");
-    avatar.textContent = "";
-    avatar.style.backgroundImage = `url(${e.target.result})`;
-    avatar.style.backgroundSize = "cover";
-    avatar.style.backgroundPosition = "center";
+  const { error } = await db.storage
+    .from("profile-photos")
+    .upload(path, file, {
+      upsert: true,
+      contentType: file.type
+    });
 
-    localStorage.setItem("profilePhoto_" + currentUser.id, e.target.result);
-  };
+  if (error) {
+    alert("Erreur lors de l'enregistrement : " + error.message);
+    return;
+  }
 
-  reader.readAsDataURL(file);
+  await loadProfilePhoto();
+  toast("Photo de profil enregistrée.");
 });
     $("saveSettingsBtn").addEventListener("click", saveSettings);
 $("changePasswordBtn").addEventListener("click", async function() {
