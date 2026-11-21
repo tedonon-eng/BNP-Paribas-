@@ -2811,7 +2811,34 @@ async function initializeApp() {
   reader.readAsDataURL(file);
 });
     $("saveSettingsBtn").addEventListener("click", saveSettings);
+$("changePasswordBtn").addEventListener("click", async function() {
+  const password = $("newPassword").value;
+  const confirmation = $("confirmPassword").value;
+  const status = $("passwordStatus");
 
+  if (password.length < 6) {
+    status.textContent = "Le mot de passe doit contenir au moins 6 caractères.";
+    return;
+  }
+
+  if (password !== confirmation) {
+    status.textContent = "Les mots de passe ne correspondent pas.";
+    return;
+  }
+
+  const { error } = await db.auth.updateUser({
+    password: password
+  });
+
+  if (error) {
+    status.textContent = "Erreur : " + error.message;
+    return;
+  }
+
+  status.textContent = "Mot de passe modifié avec succès.";
+  $("newPassword").value = "";
+  $("confirmPassword").value = "";
+});
     $("transferBtn").addEventListener("click", transferMoney);
     $("depositBtn").addEventListener("click", () => createRequest("deposit"));
     $("withdrawBtn").addEventListener("click", () => createRequest("withdraw"));
