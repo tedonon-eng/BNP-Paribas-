@@ -2831,6 +2831,25 @@ async function signOut() {
   showAuthPanel("login");
   toast("Déconnexion réussie.");
 }
+  function resetInactivityTimer() {
+  if (!currentUser) return;
+
+  clearTimeout(inactivityTimer);
+
+  inactivityTimer = setTimeout(async () => {
+    await db.auth.signOut();
+    currentUser = null;
+    currentProfile = null;
+    currentWallet = null;
+    showLoggedOutScreen();
+    showAuthPanel("login");
+    toast("Déconnexion automatique après 30 minutes d'inactivité.");
+  }, INACTIVITY_LIMIT);
+}
+
+["click", "keydown", "touchstart", "scroll"].forEach(event => {
+  document.addEventListener(event, resetInactivityTimer);
+});
 
 /* INITIALISATION DE L'APPLICATION */
 async function initializeApp() {
