@@ -1092,8 +1092,9 @@ th{color:var(--muted);font-size:10px}
 
 <!-- NAVIGATION PRINCIPALE -->
 <nav id="bottomNav" class="bottom-nav hidden">
-  <button class="active" data-section="homeSection">
-    <span><svg viewBox="0 0 24 24"><path d="m3 10 9-7 9 7"/><path d="M5 9v11h14V9"/><path d="M9 20v-6h6v6"/></svg></span>Accueil
+  $("adminVirtualIban").value = client?.virtual_iban || "";
+$("adminVirtualBic").value = client?.virtual_bic || "";
+$("adminVirtualTaxCode").value = client?.virtual_tax_code || "";
   </button>
   <button data-section="transferSection">
     <span><svg viewBox="0 0 24 24"><path d="M4 12h15M13 5l7 7-7 7"/></svg></span>Virement
