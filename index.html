@@ -2013,6 +2013,24 @@ async function loadTransactions() {
 
   const home = $("homeTransactions");
   const table = $("transactionsTable");
+  let totalCredits = 0;
+let totalDebits = 0;
+
+(data || []).forEach(transaction => {
+  const amount = Number(transaction.amount) || 0;
+
+  if (transaction.receiver_id === currentUser.id) {
+    totalCredits += amount;
+  } else {
+    totalDebits += amount;
+  }
+});
+
+const creditsDisplay = document.getElementById("historyCreditsTotal");
+const debitsDisplay = document.getElementById("historyDebitsTotal");
+
+if (creditsDisplay) creditsDisplay.textContent = formatMoney(totalCredits);
+if (debitsDisplay) debitsDisplay.textContent = formatMoney(totalDebits);
   if (home) home.innerHTML = "";
 const walletList = document.getElementById("walletTransactions");
 if (walletList) walletList.innerHTML = "";
