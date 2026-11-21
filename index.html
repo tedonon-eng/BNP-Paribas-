@@ -1508,8 +1508,9 @@ async function saveVirtualIdentifiers() {
     return;
   }
 
-  const userId = $("adminClientSelect").value;
+    const userId = $("adminClientSelect").value;
   const virtualIban = $("adminVirtualIban").value.trim();
+  const virtualBic = $("adminVirtualBic").value.trim();
   const virtualTaxCode = $("adminVirtualTaxCode").value.trim();
 
   if (!userId) {
@@ -1517,14 +1518,15 @@ async function saveVirtualIdentifiers() {
     return;
   }
 
-  if (!virtualIban || !virtualTaxCode) {
-    showStatus("identifierAdminStatus", "Remplissez les deux champs.", true);
+  if (!virtualIban || !virtualBic || !virtualTaxCode) {
+    showStatus("identifierAdminStatus", "Remplissez les trois champs.", true);
     return;
   }
 
   const { error } = await db.rpc("admin_update_virtual_identifiers", {
     p_user_id: userId,
     p_virtual_iban: virtualIban,
+    p_virtual_bic: virtualBic,
     p_virtual_tax_code: virtualTaxCode
   });
 
