@@ -1538,9 +1538,10 @@ async function saveVirtualIdentifiers() {
   const client = adminClients.find(item => item.user_id === userId);
 
   if (client) {
-    client.virtual_iban = virtualIban;
-    client.virtual_tax_code = virtualTaxCode;
-  }
+  client.virtual_iban = virtualIban;
+  client.virtual_bic = virtualBic;
+  client.virtual_tax_code = virtualTaxCode;
+}
 
   showStatus("identifierAdminStatus", "Identifiants fictifs enregistrés.");
   toast("Identifiants du client mis à jour.");
