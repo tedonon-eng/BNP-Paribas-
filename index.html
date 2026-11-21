@@ -2083,6 +2083,14 @@ function updateProfileDisplay() {
   $("homeAvatar").textContent = initials;
 
   $("profileAvatar").textContent = initials;
+  const savedPhoto = localStorage.getItem("profilePhoto_" + currentUser.id);
+
+if (savedPhoto) {
+  $("profileAvatar").textContent = "";
+  $("profileAvatar").style.backgroundImage = `url(${savedPhoto})`;
+  $("profileAvatar").style.backgroundSize = "cover";
+  $("profileAvatar").style.backgroundPosition = "center";
+}
   $("profileFullName").textContent = fullName;
   $("profileEmail").textContent = currentUser.email || "";
   $("profileEmailInput").value = currentUser.email || "";
