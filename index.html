@@ -2111,6 +2111,13 @@ const debitsDisplay = document.getElementById("historyDebitsTotal");
 
 if (creditsDisplay) creditsDisplay.textContent = formatMoney(totalCredits);
 if (debitsDisplay) debitsDisplay.textContent = formatMoney(totalDebits);
+  const operationsCount = document.getElementById("historyOperationsCount");
+const creditsCount = document.getElementById("historyCreditsCount");
+const debitsCount = document.getElementById("historyDebitsCount");
+
+if (operationsCount) operationsCount.textContent = (data || []).length;
+if (creditsCount) creditsCount.textContent = (data || []).filter(t => t.receiver_id === currentUser.id).length;
+if (debitsCount) debitsCount.textContent = (data || []).filter(t => t.sender_id === currentUser.id).length;
   if (home) home.innerHTML = "";
 const walletList = document.getElementById("walletTransactions");
 if (walletList) walletList.innerHTML = "";
