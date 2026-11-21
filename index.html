@@ -3224,6 +3224,57 @@ $("changePasswordBtn").addEventListener("click", async function() {
     $("adminNotificationRecipient").value !== "specific"
   );
 });
+    $("sendAdminNotificationBtn").addEventListener("click", async () => {
+  if (currentProfile?.role !== "admin" || !currentUser) {
+    showStatus("adminNotificationStatus", "Accès réservé à l'administrateur.", true);
+    return;
+  }
+
+  const title = $("adminNotificationTitle").value.trim();
+  const message = $("adminNotificationMessage").value.trim();
+  const recipientMode = $("adminNotificationRecipient").value;
+
+  if (!title || !message) {
+    showStatus("adminNotificationStatus", "Remplissez le titre et le message.", true);
+    return;
+  }
+
+  let recipientIds = [];
+
+  if (recipientMode === "all") {
+    recipientIds = adminClients.map(client => client.user_id);
+  } else {
+    const selectedClient = $("adminNotificationClient").value;
+    if (!selectedClient) {
+      showStatus("adminNotificationStatus", "Choisissez un client.", true);
+      return;
+    }
+    recipientIds = [selectedClient];
+  }
+
+  if (!recipientIds.length) {
+    showStatus("adminNotificationStatus", "Aucun client disponible.", true);
+    return;
+  }
+
+  const rows = recipientIds.map(recipientId => ({
+    sender_id: currentUser.id,
+    recipient_id: recipientId,
+    title,
+    message
+  }));
+
+  const { error } = await db.from("notifications").insert(rows);
+
+  if (error) {
+    showStatus("adminNotificationStatus", "Erreur : " + error.message, true);
+    return;
+  }
+
+  $("adminNotificationTitle").value = "";
+  $("adminNotificationMessage").value = "";
+  showStatus("adminNotificationStatus", "Notification envoyée avec succès.");
+});
     loadSettings();
 
     const {data, error} = await db.auth.getSession();
