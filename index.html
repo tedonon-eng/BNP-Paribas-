@@ -629,6 +629,43 @@ th{color:var(--muted);font-size:10px}
               0 4px 9px rgba(0, 100, 60, 0.12);
   transform: translateY(-3px);
 }
+  /* ENTÊTE 3D - DESIGN VERT ET OR */
+.topbar {
+  background:
+    radial-gradient(circle at 85% 25%, #36a98255, transparent 32%),
+    linear-gradient(135deg, #031f1a, #075b43 55%, #0b8060);
+  box-shadow:
+    0 15px 35px #001c1655,
+    inset 0 1px 1px #ffffff35;
+  perspective: 900px;
+}
+
+.topbar::before {
+  content: "🏛️";
+  position: absolute;
+  right: 22px;
+  top: 48px;
+  font-size: 100px;
+  opacity: .28;
+  transform: rotateY(-22deg) rotateX(8deg);
+  filter: drop-shadow(12px 16px 8px #00130f99);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.topbar .brand-mark {
+  border: 1px solid #fff4cf;
+  background: linear-gradient(145deg, #fff0bd, #d2a94e 55%, #8e6a27);
+  box-shadow:
+    0 9px 0 #76551e,
+    0 15px 22px #00150f99,
+    inset 0 2px 4px #ffffffbb;
+  transform: translateY(-3px);
+}
+
+.topbar > img {
+  display: none;
+}
 </style>
 
   
