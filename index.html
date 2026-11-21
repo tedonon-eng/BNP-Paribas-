@@ -2520,7 +2520,7 @@ if (pageNote) {
   window.scrollTo({top:0, behavior:"smooth"});
 }
 
-document.querySelectorAll(".bottom-nav button").forEach(button => {
+document.querySelectorAll(".bottom-nav button, .top-quick-actions button").forEach(button => {
   button.addEventListener("click", () => {
     showSection(button.dataset.section);
   });
