@@ -1760,40 +1760,37 @@ isolation: isolate;
   font-size: 23px;
 }
   
-.home-promo {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  background: linear-gradient(120deg, #e2f2e9, #f7fbf8);
-  border-radius: 20px;
-  padding: 20px;
-  overflow: hidden;
+
+.home-shortcuts {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin: 20px 0 22px;
 }
 
-.home-promo h2 {
-  font-size: 17px;
-  margin: 0 0 7px;
-  color: #174b35;
+.home-shortcuts button {
+  min-width: 0;
+  border: 1px solid #edf1ee;
+  background: white;
+  border-radius: 17px;
+  padding: 14px 3px 12px;
+  color: #34483e;
+  font-size: 11px;
+  box-shadow: 0 4px 13px #163b2b0b;
 }
 
-.home-promo p {
-  font-size: 12px;
-  color: #61766a;
+.home-shortcuts button span {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  margin: 0 auto 9px;
+  border-radius: 14px;
+  background: #e8f5ee;
+  color: #078c5b;
+  font-size: 23px;
 }
-
-.home-promo button {
-  background: #08734f;
-  color: white;
-  border: 0;
-  border-radius: 20px;
-  padding: 9px 15px;
-}
-
-.home-promo-image {
-  font-size: 55px;
-  transform: rotate(-12deg);
-}
+  
     </style>
   
 </head>
