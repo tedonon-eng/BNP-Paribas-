@@ -1607,6 +1607,81 @@ isolation: isolate;
 <div id="appScreen" class="hidden">
   
 <!-- NOUVELLE PAGE PORTEFEUILLE -->
+  <!-- NOUVEL ACCUEIL — DÉMONSTRATION INDÉPENDANTE -->
+<section id="homeSection" class="section home-page">
+
+  <div class="home-header">
+    <div class="home-brand">
+      <div class="home-logo">✦</div>
+      <div>
+        <strong>ESPACE BANCAIRE</strong>
+        <small>Votre espace bancaire</small>
+      </div>
+    </div>
+
+    <div class="top-quick-actions">
+      <button type="button" data-section="notificationsSection">
+        ♧ <span id="notificationNavBadge">0</span>
+      </button>
+      <button type="button" data-section="settingsSection">⚙</button>
+    </div>
+
+    <div class="home-welcome">
+      <div id="homeAvatar" class="home-avatar">M</div>
+      <div>
+        <h2 id="welcomeName">Bonjour</h2>
+        <p>Bienvenue sur votre espace</p>
+        <small id="userEmail"></small>
+      </div>
+    </div>
+  </div>
+
+  <div class="virtual-note">
+     Affiliée à BNP Paribas.
+  </div>
+
+  <div class="home-balance-card">
+    <div class="home-balance-icon">▣</div>
+    <div class="home-balance-content">
+      <p>Solde total disponible</p>
+      <h1 id="balance">0,00 €</h1>
+      <span class="home-active">✓ Compte actif</span>
+      <svg viewBox="0 0 600 100" preserveAspectRatio="none">
+        <path id="homeBalanceLine" d="M0 85 Q100 35 180 65 T350 45 T600 10"
+          fill="none" stroke="#078c5b" stroke-width="5"/>
+      </svg>
+      <div id="homeBalanceDates"></div>
+      <small id="homeAccountId"></small>
+    </div>
+  </div>
+
+  <div class="home-shortcuts">
+    <button type="button" onclick="showSection('depositSection')">
+      <span>＋</span>Dépôt
+    </button>
+    <button type="button" onclick="showSection('transferSection')">
+      <span>↗</span>Virement
+    </button>
+    <button type="button" onclick="showSection('historySection')">
+      <span>▤</span>Activité
+    </button>
+    <button type="button" onclick="showSection('walletSection')">
+      <span>▣</span>Carte
+    </button>
+  </div>
+
+  <div class="home-promo">
+    <div>
+      <h2>Un espace plus proche de vous</h2>
+      <p>Simple. Sécurisé. Moderne.</p>
+      <button type="button" onclick="showSection('walletSection')">
+        Découvrir ›
+      </button>
+    </div>
+    <div class="home-promo-image">💳</div>
+  </div>
+
+</section>
 <section id="walletSection" class="section wallet-page">
 
   <div class="wallet-top">
@@ -1641,7 +1716,7 @@ isolation: isolate;
     </div>
 
     <p class="wallet-demo-note">
-      Portefeuille de démonstration. Les devises USD et GBP ne sont pas des comptes actifs.
+      Portefeuilles Actif
     </p>
 
   <div class="wallet-panel">
