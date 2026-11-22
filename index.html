@@ -1738,64 +1738,6 @@ isolation: isolate;
 <!-- APPLICATION -->
 <div id="appScreen" class="hidden">
   
-  <!-- ACCUEIL -->
-
-<section id="homeSection" class="section active">
-
-  <div class="card welcome">
-    <div class="welcome-user">
-      <div class="avatar" id="homeAvatar">U</div>
-      <div>
-        <h2 id="welcomeName">Bonjour 👋</h2>
-        <p id="userEmail">Utilisateur</p>
-        <span class="verified-mark">✓ Bienvenue sur votre espace</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="balance-card">
-    <div class="balance-head">
-      <span>Solde total disponible</span>
-      <span>COMPTE ACTIF</span>
-    </div>
-    <div class="balance-amount" id="balance">0,00 €</div>
-    <div class="balance-foot">Portefeuille BNP Paribas</div>
-    <div class="balance-chart">
-      <svg viewBox="0 0 320 150" preserveAspectRatio="none">
-        <line x1="10" y1="30" x2="310" y2="30" stroke="#ffffff" opacity=".2"/>
-        <line x1="10" y1="75" x2="310" y2="75" stroke="#ffffff" opacity=".2"/>
-        <line x1="10" y1="120" x2="310" y2="120" stroke="#ffffff" opacity=".2"/>
-        <polyline id="homeBalanceLine"
-          points="10,110 70,90 130,100 190,60 250,70 310,30"
-          fill="none" stroke="#ffffff" stroke-width="3"
-          stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </div>
-    <div id="homeBalanceDates" class="balance-chart-dates"></div>
-  </div>
-
-  <div class="card home-actions-card">
-    <div class="section-title">Accès rapides</div>
-    <div class="quick-grid">
-      <button class="quick" onclick="showSection('depositSection')">
-        <span>＋</span>Dépôt
-      </button>
-      <button class="quick" onclick="showSection('transferSection')">
-        <span>➜</span>Virement
-      </button>
-      <button class="quick" onclick="showSection('historySection')">
-        <span>↻</span>Activité
-      </button>
-      <button class="quick" onclick="showSection('profileSection')">
-        <span>▣</span>Profil
-      </button>
-    </div>
-  </div>
-
-  <div class="home-promo-card">
-    <div>
-      <span>ESPACE PERSONNEL</span>
-      
 <!-- NOUVELLE PAGE PORTEFEUILLE -->
 <section id="walletSection" class="section wallet-page">
 
