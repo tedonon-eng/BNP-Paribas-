@@ -1768,7 +1768,7 @@ isolation: isolate;
       <div>
         <h2 id="welcomeName">Bonjour 👋</h2>
         <p id="userEmail">Utilisateur</p>
-        <span class="verified-mark">✓ Compte de démonstration</span>
+        <span class="verified-mark">✓ Bienvenue sur votre espace</span>
       </div>
     </div>
   </div>
@@ -1776,7 +1776,7 @@ isolation: isolate;
   <div class="balance-card">
     <div class="balance-head">
       <span>Solde total disponible</span>
-      <span>COMPTE VIRTUEL</span>
+      <span>COMPTE ACTIF</span>
     </div>
     <div class="balance-amount" id="balance">0,00 €</div>
     <div class="balance-foot">Portefeuille BNP Paribas</div>
@@ -1815,47 +1815,120 @@ isolation: isolate;
   <div class="home-promo-card">
     <div>
       <span>ESPACE PERSONNEL</span>
-      <h3>Gérez votre portefeuille virtuel</h3>
+      <h3>Gérez votre portefeuille actif</h3>
       <p>Retrouvez vos opérations en toute simplicité.</p>
     </div>
     <div class="auth-visual">
       <div class="card-3d">
         <div class="card-3d-top">
-          <span>CARTE VIRTUELLE</span><span>✦</span>
+          <span>CARTE CRÉDIT</span><span>✦</span>
         </div>
         <div class="card-chip"></div>
-        <div class="card-3d-bottom">
-          <span>ESPACE BANCAIRE</span><span>BNP Paribas</span>
+
+<div class="virtual-note">
+  <strong>Espace bancaire actif</strong>
+</div>
+
+<section id="homeSection" class="section active">
+
+  <header class="home-hero">
+    <div class="home-brand-row">
+      <div class="home-brand">
+        <div class="home-brand-logo">✦</div>
+        <div>
+          <h1>ESPACE DÉMO</h1>
+          <p>Votre espace personnel</p>
         </div>
       </div>
-      <div class="card-orbit"></div>
-    </div>
-  </div>
 
-  <div class="home-account-preview">
-    <div class="section-title">Aperçu du compte</div>
-    <div class="stat-grid">
-      <div class="stat">
-        <small>Type de compte</small>
-        <strong>Virtuel</strong>
-      </div>
-      <div class="stat">
-        <small>Statut</small>
-        <strong><span class="pill">Compte Bancaire active</span></strong>
-      </div>
-      <div class="stat">
-        <small>Identifiant</small>
-        <strong id="homeAccountId">—</strong>
-      </div>
-      <div class="stat">
-        <small>Devise</small>
-        <strong>EUR (€)</strong>
+      <div class="top-quick-actions">
+        <button class="quick-icon-btn" data-section="notificationsSection" aria-label="Notifications">
+          <svg viewBox="0 0 24 24">
+            <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"/>
+            <path d="M10 21h4"/>
+          </svg>
+          <span id="notificationNavBadge" class="notification-nav-badge hidden">0</span>
+        </button>
+        <button class="quick-icon-btn" data-section="settingsSection" aria-label="Paramètres">
+          <svg viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M19 13.5v-3l-2-.7-.8-1.8.9-1.9-2.1-2.1-1.9.9-1.8-.8-.7-2h-3l-.7 2-1.8.8-1.9-.9-2.1 2.1.9 1.9-.8 1.8-2 .7v3l2 .7.8 1.8-.9 1.9 2.1 2.1 1.9-.9 1.8.8.7 2h3l.7-2 1.8-.8 1.9.9 2.1-2.1-.9-1.9.8-1.8z"/>
+          </svg>
+        </button>
       </div>
     </div>
-  </div>
 
+    <div class="home-welcome">
+      <div class="home-photo" id="homeAvatar">U</div>
+      <div>
+        <h2 id="welcomeName">Bonjour 👋</h2>
+        <p>Bienvenue sur votre espace</p>
+        <span class="home-verified">✓ Profil vérifié</span>
+        <span id="userEmail" hidden></span>
+      </div>
+    </div>
+    <div class="home-hero-wave"></div>
+  </header>
+
+  <div class="home-content">
+
+    <div class="home-balance-card">
+      <div class="home-balance-icon">▣</div>
+      <div class="home-balance-info">
+        <span>Solde total disponible</span>
+        <strong id="balance">0,00 €</strong>
+        <span class="home-active">✓ Compte actif</span>
+      </div>
+      <button class="home-balance-arrow" onclick="showSection('walletSection')">➜</button>
+      <div class="home-chart">
+        <svg viewBox="0 0 600 100" preserveAspectRatio="none">
+          <path d="M0 80 C60 55 80 90 140 58 S230 75 290 45 S380 55 440 28 S530 30 600 12" fill="none" stroke="#078b5b" stroke-width="5" stroke-linecap="round"/>
+          <path d="M0 80 C60 55 80 90 140 58 S230 75 290 45 S380 55 440 28 S530 30 600 12 L600 100 L0 100Z" fill="#bcebd5" opacity=".35"/>
+        </svg>
+      </div>
+      <div id="homeBalanceDates" hidden></div>
+      <svg id="homeBalanceLine" hidden></svg>
+    </div>
+
+    <div class="home-shortcuts">
+      <button onclick="showSection('depositSection')">
+        <span class="shortcut-icon">＋</span>
+        <strong>Dépôt</strong>
+      </button>
+      <button onclick="showSection('transferSection')">
+        <span class="shortcut-icon">↗</span>
+        <strong>Virement</strong>
+      </button>
+      <button onclick="showSection('historySection')">
+        <span class="shortcut-icon">▤</span>
+        <strong>Activité</strong>
+      </button>
+      <button onclick="showSection('walletSection')">
+        <span class="shortcut-icon">▣</span>
+        <strong>Carte</strong>
+      </button>
+    </div>
+
+    <div class="home-promo">
+      <div class="home-promo-copy">
+        <h3>Un espace plus proche de vous</h3>
+        <p>Simple. Sécurisé. Moderne.</p>
+        <button onclick="showSection('walletSection')">Découvrir　›</button>
+      </div>
+      <div class="home-promo-art">
+        <div class="demo-card-art">
+          <span>CARTE DE CRÉDIT</span>
+          <div class="demo-chip"></div>
+          <strong>ESPACE BANCAIRE</strong>
+          <span class="demo-contactless">)))</span>
+        </div>
+      </div>
+    </div>
+
+    <span id="homeAccountId" hidden>—</span>
+  </div>
 </section>
-  
+        
 <!-- NOUVELLE PAGE PORTEFEUILLE -->
 <section id="walletSection" class="section wallet-page">
 
