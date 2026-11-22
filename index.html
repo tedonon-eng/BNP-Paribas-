@@ -1517,32 +1517,33 @@ isolation: isolate;
   color: #172b25;
 }
 
+
 .home-header {
   position: relative;
   overflow: hidden;
-  background: linear-gradient(145deg, #006b49, #004b35);
+  background: linear-gradient(135deg, #087653 0%, #00543b 55%, #003f2e 100%);
   color: white;
   margin: 0 -16px;
-  padding: 25px 18px 20px;
-  border-radius: 0 0 28px 28px;
+  padding: 22px 20px 24px;
+  border-radius: 0 0 26px 26px;
+  min-height: 190px;
 }
 
 .home-brand {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding-right: 112px;
+  gap: 13px;
+  padding-right: 104px;
 }
 
 .home-logo {
-  width: 50px;
-  height: 50px;
+  width: 54px;
+  height: 54px;
   flex-shrink: 0;
   border: 2px solid white;
-  border-radius: 0;
+  border-radius: 3px;
   display: grid;
   place-items: center;
-  font-size: 25px;
   background: #078b61;
 }
 
@@ -1552,8 +1553,8 @@ isolation: isolate;
 }
 
 .home-brand strong {
-  font-size: 13px;
-  letter-spacing: .4px;
+  font-size: 14px;
+  letter-spacing: .5px;
   white-space: nowrap;
 }
 
@@ -1565,23 +1566,23 @@ isolation: isolate;
 
 .top-quick-actions {
   position: absolute;
-  top: 28px;
-  right: 20px;
+  top: 23px;
+  right: 18px;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 9px;
   margin: 0;
 }
 
 .top-quick-actions button {
   position: relative;
-  width: 54px;
-  height: 54px;
+  width: 46px;
+  height: 46px;
   border: 0;
   border-radius: 50%;
   background: white;
   color: #063e30;
-  font-size: 25px;
+  font-size: 22px;
   box-shadow: 0 3px 10px #002d2025;
 }
 
@@ -1599,8 +1600,36 @@ isolation: isolate;
 .home-welcome {
   display: flex;
   align-items: center;
-  gap: 15px;
-  margin-top: 32px;
+  gap: 14px;
+  margin-top: 29px;
+}
+
+.home-avatar {
+  width: 58px;
+  height: 58px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #e4f1eb;
+  color: #08734f;
+  display: grid;
+  place-items: center;
+  font-size: 24px;
+  font-weight: 800;
+  background-size: cover;
+  background-position: center;
+  border: 2px solid white;
+}
+
+.home-welcome h2 {
+  margin: 0 0 5px;
+  font-size: 21px;
+}
+
+.home-welcome p,
+.home-welcome small {
+  margin: 0;
+  color: #e5f4ed;
+  font-size: 13px;
 }
 
 .home-avatar {
