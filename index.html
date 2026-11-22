@@ -642,35 +642,48 @@ th{color:var(--muted);font-size:10px}
   stroke-linejoin: round;
 }
   /* NAVIGATION DU BAS - EFFET 3D */
+
+/* Navigation inférieure */
 .bottom-nav {
-  margin: 0 10px 10px;
-  width: calc(100% - 20px);
-  border: 1px solid #dcebe1;
+  position: fixed;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  width: auto;
+  display: flex;
+  justify-content: space-around;
+  gap: 5px;
+  padding: 9px 6px;
+  border: 1px solid #e1ebe4;
   border-radius: 20px;
-  background: linear-gradient(145deg, #ffffff, #e9f2ec);
-  box-shadow: 0 8px 22px rgba(0, 70, 45, 0.18),
-              inset 0 2px 3px #ffffff;
-  padding: 10px 5px;
+  background: #ffffff;
+  box-shadow: 0 5px 20px rgba(0, 55, 35, 0.12);
+  z-index: 1000;
 }
 
 .bottom-nav button {
   flex: 1;
-  border: 1px solid #e1ece5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  padding: 7px 3px;
+  border: 0;
   border-radius: 13px;
-  background: linear-gradient(145deg, #ffffff, #edf4ef);
-  box-shadow: 3px 4px 7px rgba(0, 60, 35, 0.12),
-              -2px -2px 5px #ffffff;
-  transition: all 0.2s ease;
+  background: transparent;
+  color: #718078;
+  font-size: 10px;
+  font-weight: 600;
+  box-shadow: none;
 }
 
 .bottom-nav button.active {
   color: #08764f;
-  background: linear-gradient(145deg, #dff2e6, #ffffff);
-  border-color: #b9dfc8;
-  box-shadow: inset 3px 3px 6px rgba(0, 100, 60, 0.13),
-              0 4px 9px rgba(0, 100, 60, 0.12);
-  transform: translateY(-3px);
+  background: #e8f5ed;
+  transform: none;
+  box-shadow: none;
 }
+  
   /* ENTÊTE 3D - DESIGN VERT ET OR */
 .topbar {
   background:
