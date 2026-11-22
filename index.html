@@ -1528,17 +1528,13 @@ isolation: isolate;
 }
 
 .home-header::before {
-  content: "✦     ✧       ✦       ✧";
+  content: "";
   position: absolute;
-  top: 35px;
-  right: -15px;
-  width: 65%;
-  color: white;
-  font-size: 38px;
-  line-height: 2;
-  letter-spacing: 12px;
-  opacity: .18;
-  transform: rotate(-15deg);
+  inset: 0;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 220'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='2' opacity='.23'%3E%3Cpath d='M80 15 L92 48 L125 60 L92 72 L80 105 L68 72 L35 60 L68 48 Z'/%3E%3Cpath d='M280 35 L290 62 L317 72 L290 82 L280 109 L270 82 L243 72 L270 62 Z'/%3E%3Cpath d='M170 125 L180 152 L207 162 L180 172 L170 199 L160 172 L133 162 L160 152 Z'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
   pointer-events: none;
 }
 
