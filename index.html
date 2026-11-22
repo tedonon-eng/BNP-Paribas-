@@ -1534,7 +1534,11 @@ isolation: isolate;
 .home-header {
   position: relative;
   overflow: hidden;
-  background: linear-gradient(135deg, #087653 0%, #00543b 55%, #003f2e 100%);
+  background:
+    radial-gradient(circle at 85% 25%, rgba(255,255,255,.10) 0 3px, transparent 4px),
+    radial-gradient(circle at 72% 65%, rgba(255,255,255,.08) 0 18px, transparent 19px),
+    radial-gradient(circle at 95% 80%, rgba(255,255,255,.07) 0 35px, transparent 36px),
+    linear-gradient(135deg, #087653 0%, #00543b 55%, #003f2e 100%);
   color: white;
   margin: 0 -16px;
   padding: 22px 20px 24px;
