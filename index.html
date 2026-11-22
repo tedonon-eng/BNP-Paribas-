@@ -2551,14 +2551,12 @@ function showLoggedInScreen() {
   $("authScreen").classList.add("hidden");
   $("appScreen").classList.remove("hidden");
   $("bottomNav").classList.remove("hidden");
-  $("logoutBtn").classList.remove("hidden");
 }
 
 function showLoggedOutScreen() {
   $("authScreen").classList.remove("hidden");
   $("appScreen").classList.add("hidden");
   $("bottomNav").classList.add("hidden");
-  $("logoutBtn").classList.add("hidden");
 }
 
 /* INFORMATIONS DU PROFIL */
@@ -3312,7 +3310,6 @@ async function initializeApp() {
 
     $("loginBtn").addEventListener("click", signIn);
     $("signupBtn").addEventListener("click", signUp);
-    $("logoutBtn").addEventListener("click", signOut);
     $("settingsLogoutBtn").addEventListener("click", signOut);
 
     $("saveProfileBtn").addEventListener("click", saveProfile);
