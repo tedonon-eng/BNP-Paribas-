@@ -1865,30 +1865,36 @@ padding: 17px 15px 14px;
   flex-shrink: 0;
 }
   
-  /* FINITION DE L'ACCUEIL */
+  /* FINITION GLOBALE DE L'ACCUEIL */
 .home-page {
-  padding-bottom: 82px;
+  padding: 0 16px 72px;
+  min-height: auto;
+  background: #eef3f7;
 }
 
-.home-header {
-  padding-bottom: 24px;
+.home-balance-card {
+  width: calc(100% + 32px);
+  box-sizing: border-box;
+  margin: 12px -16px 12px;
+  padding: 20px 18px;
+  background: linear-gradient(135deg, #087653, #003f68);
+  color: white;
+  border: 0;
+  border-radius: 0 0 20px 20px;
+  box-shadow: 0 8px 20px rgba(0, 45, 70, .20);
 }
 
-.home-brand strong {
-  font-size: 16px;
+.home-balance-icon {
+  background: linear-gradient(145deg, #d9f2ff, #77bce8);
+  color: #064b75;
+  box-shadow: 0 5px 10px #002e4c55;
 }
 
-.home-brand small {
-  font-size: 11px;
-}
-
-.home-welcome h2 {
-  font-size: 21px;
-}
-
-.home-welcome p,
-.home-welcome small {
-  font-size: 13px;
+.home-balance-content p,
+.home-balance-content h1,
+#homeAccountId,
+#homeBalanceDates {
+  color: white;
 }
 
 .home-balance-content p {
@@ -1900,17 +1906,52 @@ padding: 17px 15px 14px;
 }
 
 .home-active {
+  background: #d9f2ff;
+  color: #07517a;
   font-size: 12px;
+}
+
+#homeBalanceLine {
+  stroke: #b8e6ff;
+}
+
+.home-shortcuts {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 6px;
+  margin: 10px 0 12px;
 }
 
 .home-shortcuts button {
+  min-width: 0;
+  min-height: 88px;
+  padding: 9px 2px;
+  gap: 7px;
+  border: 1px solid #c9dce9;
+  border-radius: 13px;
+  background: linear-gradient(145deg, #ffffff, #e5f2fa);
+  color: #07517a;
   font-size: 12px;
-  min-height: 92px;
+  font-weight: 700;
+  box-shadow: 0 5px 9px #164b6b20;
+}
+
+.home-shortcuts button span {
+  width: 42px;
+  height: 42px;
+  border-radius: 13px;
+  background: linear-gradient(145deg, #8ed0f5, #176fa5);
+  color: white;
+  font-size: 23px;
+  box-shadow: 0 5px 9px #06466b55;
+  text-shadow: 0 2px 3px #003b60;
 }
 
 .home-promo {
-  min-height: 118px;
-  margin-bottom: 12px;
+  min-height: 112px;
+  margin: 0 0 8px;
+  border-radius: 15px;
+  box-shadow: 0 6px 15px #003b6025;
 }
 
 .home-promo h2 {
@@ -1919,6 +1960,15 @@ padding: 17px 15px 14px;
 
 .home-promo p {
   font-size: 13px;
+}
+
+.home-promo-image {
+  font-size: 48px;
+  filter: drop-shadow(0 7px 5px #001d2d66);
+}
+
+.virtual-note {
+  margin: 5px 0;
 }
     </style>
   
