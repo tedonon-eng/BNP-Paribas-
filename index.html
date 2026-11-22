@@ -1739,6 +1739,15 @@ isolation: isolate;
 <div id="appScreen" class="hidden">
   
 <style>
+  
+body:has(#appScreen:not(.hidden)) > header.topbar {
+  display: none !important;
+}
+
+body:has(#appScreen:not(.hidden)) > main {
+  margin-top: 0;
+}
+  
 #homeSection {
   background:#f4f7f6;
   padding:0 14px 24px;
