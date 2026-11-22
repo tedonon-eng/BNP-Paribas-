@@ -1684,24 +1684,32 @@ isolation: isolate;
   line-height: 1.2;
 }
 
+
 .home-balance-card {
   position: relative;
   display: flex;
-  align-items: center;
-  gap: 14px;
+  align-items: flex-start;
+  gap: 13px;
   width: calc(100% + 32px);
   box-sizing: border-box;
-  margin: 14px -16px 18px;
-  padding: 17px 20px;
-  background: linear-gradient(115deg, #ffffff 0%, #f2f8f4 100%);
-  border: 1px solid #dcebe2;
-  border-radius: 17px;
-  box-shadow: 0 5px 16px rgba(0, 65, 43, 0.08);
+  margin: 14px -16px 20px;
+  padding: 20px 19px 16px;
+  background: #ffffff;
+  border: 1px solid #dcebe3;
+  border-radius: 19px;
+  box-shadow: 0 6px 20px rgba(0, 65, 43, 0.08);
 }
 
 .home-balance-icon {
-  font-size: 25px;
-  color: #08734f;
+  display: grid;
+  place-items: center;
+  flex: 0 0 40px;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: #eaf5ef;
+  color: #087653;
+  font-size: 21px;
 }
 
 .home-balance-content {
@@ -1710,29 +1718,44 @@ isolation: isolate;
 }
 
 .home-balance-content p {
-  margin: 0 0 8px;
-  color: #65746d;
-  font-size: 13px;
+  margin: 2px 0 9px;
+  color: #718078;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .25px;
 }
 
 .home-balance-content h1 {
-  margin: 0 0 8px;
-  font-size: 30px;
-  color: #173d2d;
-  font-weight: 750;
+  margin: 0 0 10px;
+  color: #073b32;
+  font-size: 28px;
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -.6px;
 }
 
 .home-active {
-  color: #078c5b;
-  font-size: 12px;
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 20px;
+  background: #eaf6ef;
+  color: #087653;
+  font-size: 11px;
   font-weight: 700;
 }
 
 .home-balance-content svg {
   width: 100%;
-  height: 68px;
+  height: 58px;
   display: block;
-  margin-top: 12px;
+  margin-top: 13px;
+}
+
+#homeBalanceLine {
+  stroke: #078c5b;
+  stroke-width: 2.5px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 #homeBalanceDates {
@@ -1746,6 +1769,7 @@ isolation: isolate;
   color: #87938d;
   font-size: 10px;
 }
+  
   
 
 
