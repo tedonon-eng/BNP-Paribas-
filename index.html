@@ -1774,35 +1774,44 @@ isolation: isolate;
 
 
 
+
 .home-shortcuts {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 10px;
-  margin: 20px 0 22px;
+  gap: 11px;
+  margin: 20px 0 24px;
 }
 
 .home-shortcuts button {
   min-width: 0;
-  border: 1px solid #edf1ee;
-  background: white;
-  border-radius: 17px;
-  padding: 14px 3px 12px;
-  color: #34483e;
+  min-height: 105px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  border: 1px solid #e2ece6;
+  background: linear-gradient(160deg, #ffffff, #f7fbf8);
+  border-radius: 16px;
+  padding: 12px 3px;
+  color: #174b35;
   font-size: 11px;
-  box-shadow: 0 4px 13px #163b2b0b;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(0, 65, 43, 0.06);
 }
 
 .home-shortcuts button span {
   display: grid;
   place-items: center;
-  width: 42px;
-  height: 42px;
-  margin: 0 auto 9px;
-  border-radius: 14px;
-  background: #e8f5ee;
-  color: #078c5b;
-  font-size: 23px;
+  width: 43px;
+  height: 43px;
+  margin: 0;
+  border-radius: 13px;
+  background: #e8f4ed;
+  color: #087653;
+  font-size: 22px;
 }
+  
 
 .home-promo {
   display: flex;
