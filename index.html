@@ -2472,6 +2472,24 @@ padding: 17px 15px 14px;
     margin-top: 16px !important;
   }
 }
+  /* EMPÊCHER LES CARTES DE S'ÉCRASER */
+@media (max-height: 900px) {
+  .home-header {
+    flex-shrink: 0 !important;
+  }
+
+  .home-balance-card {
+    flex-shrink: 0 !important;
+    min-height: 115px !important;
+    padding: 12px 15px !important;
+    align-items: center !important;
+  }
+
+  .home-promo {
+    flex-shrink: 0 !important;
+    min-height: 96px !important;
+  }
+}
     </style>
   
 </head>
