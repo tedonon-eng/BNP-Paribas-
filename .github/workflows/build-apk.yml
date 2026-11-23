@@ -1,7 +1,7 @@
 
 name: Construire l'application APK
 
-on:
+"on":
   workflow_dispatch:
 
 jobs:
