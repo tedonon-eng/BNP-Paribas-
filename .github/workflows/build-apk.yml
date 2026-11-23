@@ -31,6 +31,14 @@ jobs:
       - name: Creer le projet Android
         run: |
           mkdir -p app/src/main/java/com/espacevirtuel/app
+          mkdir -p app/src/main/res/drawable
+
+          sudo apt-get update
+          sudo apt-get install -y librsvg2-bin
+
+          curl -fL "https://commons.wikimedia.org/wiki/Special:Redirect/file/BNP_Paribas.svg" -o /tmp/bnp.svg
+
+          rsvg-convert -w 512 -h 512 /tmp/bnp.svg -o app/src/main/res/drawable/ic_launcher.png
 
           cat > settings.gradle <<'EOF'
           pluginManagement {
@@ -79,16 +87,22 @@ jobs:
           cat > app/src/main/AndroidManifest.xml <<'EOF'
           <manifest xmlns:android="http://schemas.android.com/apk/res/android">
               <uses-permission android:name="android.permission.INTERNET"/>
+
               <application
                   android:label="Espace virtuel"
+                  android:icon="@drawable/ic_launcher"
+                  android:roundIcon="@drawable/ic_launcher"
                   android:theme="@android:style/Theme.Material.Light.NoActionBar">
+
                   <activity
                       android:name=".MainActivity"
                       android:exported="true">
+
                       <intent-filter>
                           <action android:name="android.intent.action.MAIN"/>
                           <category android:name="android.intent.category.LAUNCHER"/>
                       </intent-filter>
+
                   </activity>
               </application>
           </manifest>
