@@ -2405,6 +2405,29 @@ padding: 17px 15px 14px;
   border-radius: 12px;
   font-size: 14px;
 }
+  /* BOUTONS DE CONNEXION */
+#authScreen .btn {
+  min-height: 46px;
+  border-radius: 12px;
+  font-weight: 800;
+  transition: all .2s ease;
+}
+
+#authScreen .btn:not(.btn-light) {
+  background: linear-gradient(135deg, #087653, #064b75);
+  color: white;
+  box-shadow: 0 4px 10px #08765325;
+}
+
+#authScreen .btn-light {
+  background: #eaf4ef;
+  color: #087653;
+  border: 1px solid #d5e7dc;
+}
+
+#authScreen .btn:active {
+  transform: scale(.97);
+}
     </style>
   
 </head>
