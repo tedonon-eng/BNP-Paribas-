@@ -18,11 +18,10 @@ jobs:
           java-version: "17"
 
 
-      - name: Installer les composants Android
-                run: |
-          SDKMANAGER=$(find "${ANDROID_HOME:-/usr/local/lib/android/sdk}/cmdline-tools" -name sdkmanager -type f | head -n 1)
-          yes | "$SDKMANAGER" --licenses
-          "$SDKMANAGER" "platforms;android-35" "build-tools;35.0.0"
+      -       - name: Installer Android
+        uses: android-actions/setup-android@v3
+        with:
+          packages: 'platforms;android-35,build-tools;35.0.0'
 
       - name: Installer Gradle
         uses: gradle/actions/setup-gradle@v4
