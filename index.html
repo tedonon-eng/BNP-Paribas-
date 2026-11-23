@@ -2490,6 +2490,25 @@ padding: 17px 15px 14px;
     min-height: 96px !important;
   }
 }
+  /* CORRECTION DE LA MISE EN PAGE DE L'ACCUEIL */
+@media (max-height: 900px) {
+  #homeSection.active {
+    display: block !important;
+  }
+
+  .home-page {
+    height: auto !important;
+    min-height: 100dvh !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+  }
+
+  .home-balance-card,
+  .home-header,
+  .home-promo {
+    flex-shrink: 0 !important;
+  }
+}
     </style>
   
 </head>
