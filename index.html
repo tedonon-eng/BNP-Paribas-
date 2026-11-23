@@ -2045,6 +2045,106 @@ padding: 17px 15px 14px;
   color: #c8eaff;
   text-align: center;
 }
+  /* ACCUEIL ADAPTÉ À UN SEUL ÉCRAN */
+@media (max-height: 900px) {
+  .home-page {
+    height: calc(100dvh - 76px);
+    min-height: 0;
+    padding: 0 12px 4px;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .home-header {
+    min-height: 0;
+    padding: 12px 16px;
+  }
+
+  .home-welcome {
+    margin-top: 10px;
+  }
+
+  .home-avatar {
+    width: 42px;
+    height: 42px;
+  }
+
+  .virtual-note {
+    margin: 2px 0;
+    font-size: 9px;
+  }
+
+  .home-balance-card {
+    margin: 5px -12px;
+    padding: 10px 14px;
+  }
+
+  .home-balance-content h1 {
+    font-size: 23px;
+  }
+
+  .home-balance-content svg {
+    height: 35px;
+  }
+
+  .home-shortcuts {
+    margin: 5px 0;
+    gap: 5px;
+  }
+
+  .home-shortcuts button {
+    min-height: 65px;
+    padding: 5px 2px;
+    gap: 3px;
+  }
+
+  .home-shortcuts button span {
+    width: 32px;
+    height: 32px;
+    font-size: 19px;
+  }
+
+  .home-promo {
+    min-height: 0;
+    margin: 5px 0;
+    padding: 9px 12px;
+  }
+
+  .home-promo h2 {
+    font-size: 14px;
+    margin: 0 0 3px;
+  }
+
+  .home-promo p {
+    font-size: 10px;
+    margin: 2px 0;
+  }
+
+  .home-promo-image {
+    font-size: 32px;
+  }
+
+  .home-virtual-card {
+    min-height: 0;
+    margin: 7px 0 5px;
+    padding: 10px 14px;
+  }
+
+  .virtual-card-chip {
+    margin: 7px 0;
+    width: 34px;
+    height: 25px;
+  }
+
+  .virtual-card-number {
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+
+  .virtual-card-disclaimer {
+    margin-top: 7px;
+  }
+}
     </style>
   
 </head>
