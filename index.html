@@ -4123,6 +4123,27 @@ $("changePasswordBtn").addEventListener("click", async function() {
     $("adminNotificationRecipient").value !== "specific"
   );
 });
+    $("adminNotificationImage").addEventListener("change", function() {
+  const file = this.files[0];
+  const preview = $("adminNotificationPreview");
+  const container = $("adminNotificationImagePreview");
+
+  if (!file) {
+    container.style.display = "none";
+    preview.src = "";
+    return;
+  }
+
+  if (!file.type.startsWith("image/")) {
+    alert("Choisis une image valide.");
+    this.value = "";
+    container.style.display = "none";
+    return;
+  }
+
+  preview.src = URL.createObjectURL(file);
+  container.style.display = "block";
+});
     $("sendAdminNotificationBtn").addEventListener("click", async () => {
   if (currentProfile?.role !== "admin" || !currentUser) {
     showStatus("adminNotificationStatus", "Accès réservé à l'administrateur.", true);
