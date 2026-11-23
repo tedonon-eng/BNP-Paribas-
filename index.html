@@ -3151,18 +3151,23 @@ async function loadNotifications() {
   }
 
     list.innerHTML = notifications.map(item => `
-    <div class="notification-empty" style="text-align:left;margin-bottom:12px;">
-      <strong>${escapeHTML(item.title)}</strong>
-      <p>${escapeHTML(item.message)}</p>
-      <small>${new Date(item.created_at).toLocaleString("fr-FR")}</small>
-      <p>${item.read_at ? "✓ Lue" : "● Non lue"}</p>
-      ${!item.read_at ? `
-        <button class="btn btn-light mark-notification-read"
-          data-id="${escapeHTML(item.id)}">
-          Marquer comme lue
-        </button>` : ""}
-    </div>
-  `).join("");
+  <div class="notification-empty" style="text-align:left;margin-bottom:12px;">
+    <strong>${escapeHTML(item.title)}</strong>
+    <p>${escapeHTML(item.message)}</p>
+    ${item.image_url ? `
+      <img src="${escapeHTML(item.image_url)}"
+        alt="Photo de notification"
+        style="width:100%;max-height:300px;object-fit:contain;border-radius:14px;margin:10px 0;">
+    ` : ""}
+    <small>${new Date(item.created_at).toLocaleString("fr-FR")}</small>
+    <p>${item.read_at ? "✓ Lue" : "● Non lue"}</p>
+    ${!item.read_at ? `
+      <button class="btn btn-light mark-notification-read"
+        data-id="${escapeHTML(item.id)}">
+        Marquer comme lue
+      </button>` : ""}
+  </div>
+`).join("");
   list.querySelectorAll(".mark-notification-read").forEach(button => {
     button.addEventListener("click", async () => {
       const { error } = await db
