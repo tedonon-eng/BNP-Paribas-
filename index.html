@@ -2950,7 +2950,20 @@ padding: 17px 15px 14px;
   <textarea id="adminNotificationMessage"
             rows="5"
             placeholder="Écrivez votre message ici..."></textarea>
+<label>Ajouter une photo (facultatif)</label>
+<input
+  type="file"
+  id="adminNotificationImage"
+  accept="image/*"
+>
 
+<div id="adminNotificationImagePreview" style="display:none;margin:12px 0;">
+  <img
+    id="adminNotificationPreview"
+    style="width:100%;max-height:220px;object-fit:contain;border-radius:12px;"
+    alt="Aperçu de la photo"
+  >
+</div>
   <label>Destinataires</label>
   <select id="adminNotificationRecipient">
     <option value="all">Tous les clients</option>
