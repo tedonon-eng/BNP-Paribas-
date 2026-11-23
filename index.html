@@ -4181,7 +4181,43 @@ $("changePasswordBtn").addEventListener("click", async function() {
     showStatus("adminNotificationStatus", "Aucun client disponible.", true);
     return;
   }
+let imageUrl = null;
+const imageFile = $("adminNotificationImage").files[0];
 
+if (imageFile) {
+  if (!["image/jpeg", "image/png", "image/webp"].includes(imageFile.type)
+      || imageFile.size > 5 * 1024 * 1024) {
+    showStatus("adminNotificationStatus",
+      "Image invalide ou supérieure à 5 Mo.", true);
+    return;
+  }
+
+  const extension = {
+    "image/jpeg": "jpg",
+    "image/png": "png",
+    "image/webp": "webp"
+  }[imageFile.type];
+
+  const imagePath = currentUser.id + "/" + Date.now() + "." + extension;
+
+  const { error: uploadError } = await db.storage
+    .from("notification-photos")
+    .upload(imagePath, imageFile, {
+      contentType: imageFile.type
+    });
+
+  if (uploadError) {
+    showStatus("adminNotificationStatus",
+      "Erreur d'envoi de la photo : " + uploadError.message, true);
+    return;
+  }
+
+  const { data: imageData } = db.storage
+    .from("notification-photos")
+    .getPublicUrl(imagePath);
+
+  imageUrl = imageData.publicUrl;
+               }
   const rows = recipientIds.map(recipientId => ({
     sender_id: currentUser.id,
     recipient_id: recipientId,
