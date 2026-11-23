@@ -4036,7 +4036,13 @@ async function initializeApp() {
     }
 
     db = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+$("toggleLoginPassword").addEventListener("click", function() {
+  const password = $("loginPassword");
+  const visible = password.type === "password";
 
+  password.type = visible ? "text" : "password";
+  this.textContent = visible ? "Masquer le mot de passe" : "Afficher le mot de passe";
+});
     $("loginBtn").addEventListener("click", signIn);
     $("signupBtn").addEventListener("click", signUp);
     $("settingsLogoutBtn").addEventListener("click", signOut);
