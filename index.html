@@ -4236,6 +4236,8 @@ recipient_mode: recipientMode
 
   $("adminNotificationTitle").value = "";
   $("adminNotificationMessage").value = "";
+      $("adminNotificationImage").value = "";
+$("adminNotificationImagePreview").style.display = "none";
   showStatus("adminNotificationStatus", "Notification envoyée avec succès.");
       await loadAdminNotificationHistory();
 });
