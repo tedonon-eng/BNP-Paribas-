@@ -7,6 +7,7 @@ name: Construire l'application APK
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Recuperer le projet
         uses: actions/checkout@v4
@@ -17,11 +18,12 @@ jobs:
           distribution: temurin
           java-version: "17"
 
-
-
-      - name: Installer les composants Android
-        run: |
-          sdkmanager "platforms;android-35" "build-tools;35.0.0"
+      - name: Installer Android et ses composants
+        uses: android-actions/setup-android@v3
+        with:
+          packages: |
+            platforms;android-35
+            build-tools;35.0.0
 
       - name: Installer Gradle
         uses: gradle/actions/setup-gradle@v4
@@ -107,11 +109,14 @@ jobs:
               @Override
               protected void onCreate(Bundle savedInstanceState) {
                   super.onCreate(savedInstanceState);
+
                   WebView web = new WebView(this);
                   setContentView(web);
+
                   WebSettings settings = web.getSettings();
                   settings.setJavaScriptEnabled(true);
                   settings.setDomStorageEnabled(true);
+
                   web.setWebViewClient(new WebViewClient());
                   web.loadUrl("https://tedonon-eng.github.io/BNP-Paribas-/");
               }
