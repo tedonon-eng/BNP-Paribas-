@@ -1970,6 +1970,81 @@ padding: 17px 15px 14px;
 .virtual-note {
   margin: 5px 0;
 }
+  .home-virtual-card {
+  position: relative;
+  overflow: hidden;
+  margin: 18px 0 28px;
+  padding: 22px 20px 16px;
+  min-height: 190px;
+  border-radius: 20px;
+  color: white;
+  background:
+    radial-gradient(circle at 90% 10%, #4da9c7 0, transparent 35%),
+    linear-gradient(135deg, #087653, #064b75 65%, #022f50);
+  border: 1px solid #8bc9d8;
+  box-shadow: 0 12px 22px #003b6045, inset 0 1px 2px #ffffff55;
+}
+
+.virtual-card-top,
+.virtual-card-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.virtual-card-top strong {
+  font-size: 27px;
+  letter-spacing: 2px;
+}
+
+.virtual-card-top span,
+.virtual-card-bottom small {
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+.virtual-card-chip {
+  margin: 18px 0 12px;
+  width: 42px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border-radius: 7px;
+  color: #064b75;
+  background: linear-gradient(135deg, #fff1bd, #c9a85b);
+  font-size: 25px;
+  box-shadow: 0 3px 7px #001d2d66;
+}
+
+.virtual-card-number {
+  margin-bottom: 18px;
+  font-size: 18px;
+  letter-spacing: 1.5px;
+  font-weight: 700;
+}
+
+.virtual-card-bottom {
+  align-items: flex-end;
+}
+
+.virtual-card-bottom div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.virtual-card-bottom strong {
+  font-size: 11px;
+}
+
+.virtual-card-disclaimer {
+  margin: 15px 0 0;
+  font-size: 8px;
+  letter-spacing: 1px;
+  color: #c8eaff;
+  text-align: center;
+}
     </style>
   
 </head>
